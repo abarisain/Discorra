@@ -31,7 +31,34 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    windowControllers = [[NSMutableArray alloc] init];
+    [self openDocument:nil];
+}
+
+- (IBAction)openDocument:(id)sender {
+    NSOpenPanel* openDlg = [NSOpenPanel openPanel];
+    [openDlg setCanChooseFiles:NO];
+    [openDlg setCanChooseDirectories:YES];
+
+    if ([openDlg runModal] == NSOKButton )
+    {
+        NSWindowController *wc = [[MainWindowController alloc] initWithBlogPath:[[[openDlg URLs] objectAtIndex:0] path]];
+        [wc showWindow:self];
+        [self addWindowController:wc];
+    }
+}
+
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
+
+- (void)addWindowController:(NSWindowController *) controller {
+    if(![windowControllers doesContain:controller])
+        [windowControllers addObject:controller];
+}
+
+- (void)removeWindowController:(NSWindowController *) controller {
+    [windowControllers removeObjectIdenticalTo:controller];
 }
 
 @end

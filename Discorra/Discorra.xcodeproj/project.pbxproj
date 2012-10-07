@@ -13,6 +13,8 @@
 		51F08C0B1621D45B00A559B5 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 51F08C091621D45B00A559B5 /* Credits.rtf */; };
 		51F08C0E1621D45B00A559B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F08C0D1621D45B00A559B5 /* AppDelegate.m */; };
 		51F08C111621D45B00A559B5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F08C0F1621D45B00A559B5 /* MainMenu.xib */; };
+		51F08C211621E2B500A559B5 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F08C1F1621E2B500A559B5 /* MainWindowController.m */; };
+		51F08C221621E2B500A559B5 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F08C201621E2B500A559B5 /* MainWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		51F08C0C1621D45B00A559B5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		51F08C0D1621D45B00A559B5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		51F08C101621D45B00A559B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		51F08C1E1621E2B500A559B5 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWindowController.h; path = "Window Controllers/MainWindowController.h"; sourceTree = "<group>"; };
+		51F08C1F1621E2B500A559B5 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainWindowController.m; path = "Window Controllers/MainWindowController.m"; sourceTree = "<group>"; };
+		51F08C201621E2B500A559B5 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowController.xib; path = "Window Controllers/MainWindowController.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +87,8 @@
 		51F08C001621D45B00A559B5 /* Discorra */ = {
 			isa = PBXGroup;
 			children = (
+				51F08C231621E2C000A559B5 /* Windows */,
+				51F08C1D1621DF0800A559B5 /* New Cells */,
 				51F08C0C1621D45B00A559B5 /* AppDelegate.h */,
 				51F08C0D1621D45B00A559B5 /* AppDelegate.m */,
 				51F08C0F1621D45B00A559B5 /* MainMenu.xib */,
@@ -100,6 +107,23 @@
 				51F08C091621D45B00A559B5 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		51F08C1D1621DF0800A559B5 /* New Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Cells";
+			sourceTree = "<group>";
+		};
+		51F08C231621E2C000A559B5 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				51F08C1E1621E2B500A559B5 /* MainWindowController.h */,
+				51F08C1F1621E2B500A559B5 /* MainWindowController.m */,
+				51F08C201621E2B500A559B5 /* MainWindowController.xib */,
+			);
+			name = Windows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +180,7 @@
 				51F08C051621D45B00A559B5 /* InfoPlist.strings in Resources */,
 				51F08C0B1621D45B00A559B5 /* Credits.rtf in Resources */,
 				51F08C111621D45B00A559B5 /* MainMenu.xib in Resources */,
+				51F08C221621E2B500A559B5 /* MainWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +193,7 @@
 			files = (
 				51F08C071621D45B00A559B5 /* main.m in Sources */,
 				51F08C0E1621D45B00A559B5 /* AppDelegate.m in Sources */,
+				51F08C211621E2B500A559B5 /* MainWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

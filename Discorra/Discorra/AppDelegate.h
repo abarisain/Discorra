@@ -26,9 +26,13 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import "MainWindowController.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+    NSMutableArray *windowControllers;
+}
 
-@property (assign) IBOutlet NSWindow *window;
+- (void)addWindowController:(NSWindowController *) controller;
+- (void)removeWindowController:(NSWindowController *) controller;
 
 @end
