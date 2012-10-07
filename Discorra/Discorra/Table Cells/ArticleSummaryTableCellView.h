@@ -33,6 +33,8 @@
     __weak NSTextField *_date;
     __weak NSTextField *_summary;
     NSDateFormatter *dateFormatter;
+    NSColor *summaryColor;
+    NSColor *dateColor;
 }
 
 - (void)refreshWithArticle:(Article *)article;

@@ -36,7 +36,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code here.
+
     }
     
     return self;
@@ -51,6 +51,28 @@
         [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     }
     self.date.stringValue = [dateFormatter stringFromDate:article.date];
+}
+
+- (void)awakeFromNib {
+    summaryColor = self.summary.textColor;
+    dateColor = self.date.textColor;
+}
+
+- (void)setBackgroundStyle:(NSBackgroundStyle)style
+{
+    [super setBackgroundStyle:style];
+    
+    switch (style) {
+        case NSBackgroundStyleLight:
+            [self.summary setTextColor:summaryColor];
+            [self.date setTextColor:dateColor];
+            break;
+        case NSBackgroundStyleDark:
+        default:
+            [self.summary setTextColor:[NSColor whiteColor]];
+            [self.date setTextColor:[NSColor whiteColor]];
+            break;
+    }
 }
 
 @end
