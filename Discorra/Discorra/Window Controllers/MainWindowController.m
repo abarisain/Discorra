@@ -78,7 +78,9 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-
+    //Apply some custom style to the text
+    [[self.statusbarText cell] setBackgroundStyle:NSBackgroundStyleRaised];
+    [self refreshData];
 }
 
 - (void)windowWillClose:(NSNotification *)notification
@@ -96,6 +98,19 @@
     ArticleSummaryTableCellView *result = [tableView makeViewWithIdentifier:@"Cell" owner:self];
     [result refreshWithArticle:[tableData objectAtIndex:row]];
     return result;
+}
+
+#pragma mark Helpers
+
+- (void)refreshData {
+    [[self tableView] reloadData];
+    NSString *countFormat;
+    if([tableData count] == 1) {
+        countFormat = NSLocalizedString(@"%d article", @"Article count printf format");
+    } else {
+        countFormat = NSLocalizedString(@"%d articles", @"Articles count printf format (plural)");
+    }
+    [self statusbarText].stringValue = [NSString stringWithFormat:countFormat, [tableData count]];
 }
 
 @end

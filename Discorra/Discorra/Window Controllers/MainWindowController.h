@@ -39,4 +39,7 @@
 - (IBAction)build:(id)sender;
 - (IBAction)addArticle:(id)sender;
 
+@property (weak) IBOutlet NSTextField *statusbarText;
+@property (weak) IBOutlet NSTableView *tableView;
+
 @end
