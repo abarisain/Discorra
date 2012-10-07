@@ -15,6 +15,7 @@
 		51F08C111621D45B00A559B5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F08C0F1621D45B00A559B5 /* MainMenu.xib */; };
 		51F08C211621E2B500A559B5 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F08C1F1621E2B500A559B5 /* MainWindowController.m */; };
 		51F08C221621E2B500A559B5 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F08C201621E2B500A559B5 /* MainWindowController.xib */; };
+		51F08C271622067800A559B5 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F08C261622067800A559B5 /* Article.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		51F08C1E1621E2B500A559B5 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWindowController.h; path = "Window Controllers/MainWindowController.h"; sourceTree = "<group>"; };
 		51F08C1F1621E2B500A559B5 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainWindowController.m; path = "Window Controllers/MainWindowController.m"; sourceTree = "<group>"; };
 		51F08C201621E2B500A559B5 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowController.xib; path = "Window Controllers/MainWindowController.xib"; sourceTree = "<group>"; };
+		51F08C251622067800A559B5 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Article.h; path = Models/Article.h; sourceTree = "<group>"; };
+		51F08C261622067800A559B5 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Article.m; path = Models/Article.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,7 @@
 		51F08C001621D45B00A559B5 /* Discorra */ = {
 			isa = PBXGroup;
 			children = (
+				51F08C241622065800A559B5 /* Models */,
 				51F08C231621E2C000A559B5 /* Windows */,
 				51F08C1D1621DF0800A559B5 /* New Cells */,
 				51F08C0C1621D45B00A559B5 /* AppDelegate.h */,
@@ -124,6 +128,15 @@
 				51F08C201621E2B500A559B5 /* MainWindowController.xib */,
 			);
 			name = Windows;
+			sourceTree = "<group>";
+		};
+		51F08C241622065800A559B5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				51F08C251622067800A559B5 /* Article.h */,
+				51F08C261622067800A559B5 /* Article.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +207,7 @@
 				51F08C071621D45B00A559B5 /* main.m in Sources */,
 				51F08C0E1621D45B00A559B5 /* AppDelegate.m in Sources */,
 				51F08C211621E2B500A559B5 /* MainWindowController.m in Sources */,
+				51F08C271622067800A559B5 /* Article.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
