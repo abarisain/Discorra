@@ -27,12 +27,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import "AppDelegate.h"
+#import "ArticleSummaryTableCellView.h"
 
 @interface MainWindowController : NSWindowController <NSWindowDelegate, NSTableViewDataSource> {
     NSString *blogPath;
     NSArray *tableData;
 }
 
+- (NSArray*) getFakeArticles;
 - (id)initWithBlogPath:(NSString *) path;
 - (IBAction)build:(id)sender;
 - (IBAction)addArticle:(id)sender;

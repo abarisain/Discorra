@@ -29,6 +29,8 @@
 #import "ArticleSummaryTableCellView.h"
 
 @implementation ArticleSummaryTableCellView
+@synthesize summary;
+@synthesize date;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -38,6 +40,17 @@
     }
     
     return self;
+}
+
+- (void)refreshWithArticle:(Article *)article {
+    self.textField.stringValue = article.title;
+    self.summary.stringValue = article.summary;
+    if(dateFormatter == nil) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+        [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    }
+    self.date.stringValue = [dateFormatter stringFromDate:article.date];
 }
 
 @end

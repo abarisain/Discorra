@@ -27,14 +27,15 @@
 
 
 #import <Cocoa/Cocoa.h>
+#import "Article.h"
 
 @interface ArticleSummaryTableCellView : NSTableCellView {
-    
     __weak NSTextField *_date;
     __weak NSTextField *_summary;
+    NSDateFormatter *dateFormatter;
 }
 
-
+- (void)refreshWithArticle:(Article *)article;
 
 @property (weak) IBOutlet NSTextField *summary;
 @property (weak) IBOutlet NSTextField *date;

@@ -42,7 +42,7 @@
 - (id)initWithBlogPath:(NSString *) path
 {
     self = [super initWithWindowNibName:@"MainWindowController"];
-    tableData = [[NSArray alloc] initWithObjects:@"foo",@"bar", nil];
+    tableData = [self getFakeArticles];
     blogPath = [NSString stringWithString:path];
     return self;
 }
@@ -51,6 +51,18 @@
 }
 
 - (IBAction)addArticle:(id)sender {
+}
+
+- (NSArray*) getFakeArticles {
+    Article* a1 = [[Article alloc] init];
+    a1.date = [NSDate dateWithString:@"2012-07-24 10:45:32 +0100"];
+    a1.summary = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+    a1.title = @"Cher lorem";
+    Article* a2 = [[Article alloc] init];
+    a2.date = [NSDate date];
+    a2.summary = @"Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?";
+    a2.title = @"Samuel L. ipsum";
+    return [NSArray arrayWithObjects:a2, a1, nil];
 }
 
 - (id)initWithWindow:(NSWindow *)window
@@ -81,8 +93,8 @@
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSTableCellView *result = [tableView makeViewWithIdentifier:@"Cell" owner:self];
-    result.textField.stringValue = [tableData objectAtIndex:row];
+    ArticleSummaryTableCellView *result = [tableView makeViewWithIdentifier:@"Cell" owner:self];
+    [result refreshWithArticle:[tableData objectAtIndex:row]];
     return result;
 }
 
