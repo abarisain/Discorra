@@ -27,6 +27,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Article : NSObject
+@interface Article : NSObject {
+    NSString *title;
+    NSDate *date;
+    NSString *path;
+    NSString *summary;
+}
+
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSString *path;
+@property (nonatomic, strong) NSString *summary;
 
 @end
