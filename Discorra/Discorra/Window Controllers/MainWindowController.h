@@ -15,5 +15,7 @@
 }
 
 - (id)initWithBlogPath:(NSString *) path;
+- (IBAction)build:(id)sender;
+- (IBAction)addArticle:(id)sender;
 
 @end

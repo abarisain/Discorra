@@ -28,6 +28,12 @@
     return self;
 }
 
+- (IBAction)build:(id)sender {
+}
+
+- (IBAction)addArticle:(id)sender {
+}
+
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
