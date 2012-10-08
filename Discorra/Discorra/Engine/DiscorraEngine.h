@@ -28,6 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "MMMarkdown.h"
 #import "Article.h"
+#import "Page.h"
 
 #define SUMMARY_CHARACTERS_LIMIT 1000
 
@@ -46,6 +47,7 @@
 - (NSString*)buildFolderPath;
 - (bool)build;
 - (bool)cleanBuildFolder;
+- (NSString*)buildPage:(Page*)page;
 
 @property (readonly) NSString* targetPath;
 

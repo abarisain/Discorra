@@ -199,4 +199,8 @@ static NSString* const templateBase = @"base.mustache";
     return YES;
 }
 
+- (NSString*)buildPage:(Page*)page {
+    
+}
+
 @end
