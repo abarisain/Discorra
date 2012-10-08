@@ -30,19 +30,19 @@
 @implementation DiscorraEngine
 
 //This is where the articles in .md format will go
-static const NSString* articlesFolder = @"articles/";
+static NSString* const articlesFolder = @"articles/";
 //The output folder
-static const NSString* buildFolder = @"build/";
+static NSString* const buildFolder = @"build/";
 //The ressources folder (content will be copied as-is to build/res/)
-static const NSString* ressourcesFolder = @"res/";
+static NSString* const ressourcesFolder = @"res/";
 //The template folder
-static const NSString* templatesFolder = @"tpl/";
+static NSString* const templatesFolder = @"tpl/";
 //Article template
-static const NSString* templateArticle = @"article.mustache";
+static NSString* const templateArticle = @"article.mustache";
 //Index (article list) template
-static const NSString* templateIndex = @"index.mustache";
+static NSString* const templateIndex = @"index.mustache";
 //Base template (can be overriden in any sub template by putting a <!-- Discorra:OverrideBaseTemplate -->
-static const NSString* templateBase = @"base.mustache";
+static NSString* const templateBase = @"base.mustache";
 
 - (id)initWithPath:(NSString*)path {
     self = [super init];
@@ -53,11 +53,33 @@ static const NSString* templateBase = @"base.mustache";
 }
 
 - (bool)checkIfValidFolder {
-    NSArray *folders = [NSArray arrayWithObjects:articlesFolder,
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *foldersToCheck = [NSArray arrayWithObjects:articlesFolder,
                                                 buildFolder,
                                                 ressourcesFolder,
                                                 templatesFolder,
                         nil];
+    NSArray *templatesToCheck = [NSArray arrayWithObjects:templateArticle,
+                                 templateIndex,
+                                 templateBase,
+                                 nil];
+    BOOL isDirectory = NO;
+    if(targetPath == nil ||
+       !([fileManager fileExistsAtPath:targetPath isDirectory:&isDirectory] && isDirectory)) {
+        return NO;
+    }
+    for(NSString* tmp in foldersToCheck) {
+        if(!([fileManager fileExistsAtPath:[targetPath stringByAppendingPathComponent:tmp] isDirectory:&isDirectory] && isDirectory)) {
+            return NO;
+        }
+    }
+    NSString *templateBasePath = [targetPath stringByAppendingPathComponent:templatesFolder];
+    for(NSString* tmp in templatesToCheck) {
+        if(!([fileManager fileExistsAtPath:[templateBasePath stringByAppendingPathComponent:tmp] isDirectory:&isDirectory] && !isDirectory)) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
