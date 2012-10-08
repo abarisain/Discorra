@@ -102,6 +102,7 @@ static NSString* const templateBase = @"base.mustache";
             return false;
         }
     }
+    //Todo : replace dummy files with real skeleton files
     NSString *templateBasePath = [_targetPath stringByAppendingPathComponent:templatesFolder];
     for(NSString* tmp in templates) {
         if(![fileManager createFileAtPath:[templateBasePath stringByAppendingPathComponent:tmp] contents:[NSData data] attributes:nil]) {
@@ -110,6 +111,39 @@ static NSString* const templateBase = @"base.mustache";
         }
     }
     return true;
+}
+
+- (NSArray*)articles {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error = nil;
+    NSArray *files = [fileManager contentsOfDirectoryAtPath:_targetPath error:&error];
+    NSMutableArray *articles = [[NSMutableArray alloc] init];
+    NSString *fileContent;
+    Article *article;
+    BOOL isDir = false;
+    for(NSString *filePath in files) {
+        if(![filePath hasSuffix:@".md" caseInsensitive:YES] || ![fileManager fileExistsAtPath:filePath isDirectory:&isDir] || !isDir)
+            continue;
+        error = nil;
+        fileContent = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+        if(error != nil) {
+            NSLog(@"Error while reading article %@ : %@", filePath, [error localizedDescription]);
+            continue;
+        }
+        if([fileContent length] == 0)
+            continue;
+        article = [[Article alloc] init];
+        NSMutableArray *fileContentArray = [[fileContent componentsSeparatedByString:@"\n"] mutableCopy];
+        article.date = [[fileManager attributesOfItemAtPath:filePath error:NULL] fileModificationDate];
+        article.title = [fileContentArray objectAtIndex:0];
+        [fileContentArray removeObjectAtIndex:0];
+        if([fileContentArray count] > 0) {
+            NSString *fullSummary = [fileContentArray componentsJoinedByString:@" "];
+            article.summary = [fullSummary substringToIndex:MIN(fullSummary.length, SUMMARY_CHARACTERS_LIMIT)];
+        }
+        [articles addObject:article];
+    }
+    return [NSArray arrayWithArray:articles];
 }
 
 @end

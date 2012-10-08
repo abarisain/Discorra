@@ -26,6 +26,10 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "Article.h"
+
+#define SUMMARY_CHARACTERS_LIMIT 200
+
 
 @interface DiscorraEngine : NSObject {
     NSString *_targetPath;
@@ -34,6 +38,7 @@
 - (id)initWithPath:(NSString*)path;
 - (bool)checkIfPathContainsBlog;
 - (bool)createSkeleton;
+- (NSArray*)articles;
 
 @property (readonly) NSString* targetPath;
 

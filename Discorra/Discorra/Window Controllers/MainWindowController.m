@@ -43,7 +43,8 @@
 {
     self = [super initWithWindowNibName:@"MainWindowController"];
     if(self != nil) {
-        tableData = [self getFakeArticles];
+        //tableData = [self getFakeArticles];
+        tableData = [NSArray array];
         blogPath = [NSString stringWithString:path];
         engine = [[DiscorraEngine alloc] initWithPath:blogPath];
     }
@@ -146,6 +147,7 @@
 }
 
 - (void)refreshData {
+    tableData = [engine articles];
     [[self tableView] reloadData];
     NSString *countFormat;
     if([tableData count] == 1) {
