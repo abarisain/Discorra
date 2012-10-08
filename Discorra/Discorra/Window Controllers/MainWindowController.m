@@ -84,12 +84,11 @@
     //Apply some custom style to the text
     [[self.statusbarText cell] setBackgroundStyle:NSBackgroundStyleRaised];
     if(![engine checkIfPathContainsBlog]) {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:NSLocalizedString(@"Select another folder", @"Select another blog folder")];
-        [alert addButtonWithTitle:NSLocalizedString(@"Create a blog here", @"Create a blog")];
-        [alert setMessageText:NSLocalizedString(@"Create a blog in this directory ?", @"Ask for wether or not a blog should be created here")];
-        [alert setInformativeText:NSLocalizedString(@"The selected folder is not a blog. Do you want to create a blog here or open another folder ?", @"Description of why a blog might be created (invalid folder)")];
-        [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+        //No animation if we execute this now
+        [NSTimer scheduledTimerWithTimeInterval:0.1
+                                         target:self
+                                       selector:@selector(pathDoesNotContainBlog)
+                                       userInfo:nil repeats:NO];
     }
     [self refreshData];
 }
@@ -101,7 +100,7 @@
 
 #pragma mark Alert callbacks
 
-- (void)alertDidEnd:(NSAlert*) returnCode:(int)button contextInfo:(void*)context {
+- (void)alertDidEnd:(NSAlert*)alert returnCode:(int)button contextInfo:(void*)context {
     switch (button) {
         case NSAlertSecondButtonReturn:
             if(![engine createSkeleton] || ![engine checkIfPathContainsBlog]) {
@@ -114,9 +113,10 @@
             } else {
                 [self refreshData];
             }
+            break;
         default:
-            [(AppDelegate*)[NSApp delegate] openDocument:nil];
             [[self window] close];
+            [(AppDelegate*)[NSApp delegate] openDocument:nil];
             break;
     }
 }
@@ -135,6 +135,15 @@
 }
 
 #pragma mark Helpers
+
+- (void)pathDoesNotContainBlog {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:NSLocalizedString(@"Select another folder", @"Select another blog folder")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Create a blog here", @"Create a blog")];
+    [alert setMessageText:NSLocalizedString(@"Create a blog in this directory ?", @"Ask for wether or not a blog should be created here")];
+    [alert setInformativeText:NSLocalizedString(@"The selected folder is not a blog. Do you want to create a blog here or open another folder ?", @"Description of why a blog might be created (invalid folder)")];
+    [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
 
 - (void)refreshData {
     [[self tableView] reloadData];
