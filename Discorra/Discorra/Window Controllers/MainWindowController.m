@@ -27,10 +27,6 @@
 
 #import "MainWindowController.h"
 
-@interface MainWindowController ()
-
-@end
-
 @implementation MainWindowController
 
 - (id)init
@@ -138,6 +134,20 @@
     return result;
 }
 
+#pragma mark IBActions
+
+- (IBAction)refreshButtonPressed:(id)sender {
+    [self refreshData];
+}
+
+- (IBAction)openMenuPressed:(id)sender {
+    [self openArticle:[tableData objectAtIndex:self.tableView.clickedRow]];
+}
+
+- (IBAction)deleteMenuPressed:(id)sender {
+    [self deleteArticle:[tableData objectAtIndex:self.tableView.clickedRow]];
+}
+
 #pragma mark Helpers
 
 - (void)pathDoesNotContainBlog {
@@ -147,10 +157,6 @@
     [alert setMessageText:NSLocalizedString(@"Create a blog in this directory ?", @"Ask for wether or not a blog should be created here")];
     [alert setInformativeText:NSLocalizedString(@"The selected folder is not a blog. Do you want to create a blog here or open another folder ?", @"Description of why a blog might be created (invalid folder)")];
     [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
-}
-
-- (IBAction)refreshButtonPressed:(id)sender {
-    [self refreshData];
 }
 
 - (void)refreshData {
@@ -163,6 +169,23 @@
         countFormat = NSLocalizedString(@"%d articles", @"Articles count printf format (plural)");
     }
     [self statusbarText].stringValue = [NSString stringWithFormat:countFormat, [tableData count]];
+}
+
+- (void)openArticle:(Article*)article {
+    [[NSWorkspace sharedWorkspace] openFile:article.path];
+}
+
+- (void)deleteArticle:(Article*)article {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error = nil;
+    if(![fileManager trashItemAtURL:[NSURL fileURLWithPath:article.path] resultingItemURL:nil error:&error]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
+        [alert setMessageText:NSLocalizedString(@"Error while deleting article", nil)];
+        [alert setInformativeText:[error localizedDescription]];
+        [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:nil contextInfo:nil];
+    }
+    [self refreshData];
 }
 
 @end

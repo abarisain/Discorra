@@ -14,6 +14,8 @@
 			<string>NSButton</string>
 			<string>NSButtonCell</string>
 			<string>NSCustomObject</string>
+			<string>NSMenu</string>
+			<string>NSMenuItem</string>
 			<string>NSScrollView</string>
 			<string>NSScroller</string>
 			<string>NSTableCellView</string>
@@ -61,7 +63,7 @@
 							<string key="NSFrame">{{9, 3}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="714029937"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="176394576"/>
+							<reference key="NSNextKeyView" ref="304694784"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="993407824">
@@ -88,7 +90,7 @@
 							</object>
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
-						<object class="NSButton" id="176394576">
+						<object class="NSButton" id="304694784">
 							<reference key="NSNextResponder" ref="714029937"/>
 							<int key="NSvFlags">260</int>
 							<array class="NSMutableArray" key="NSSubviews"/>
@@ -98,13 +100,13 @@
 							<reference key="NSNextKeyView" ref="248735598"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="297666668">
+							<object class="NSButtonCell" key="NSCell" id="1020722839">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="993611107"/>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="176394576"/>
+								<reference key="NSControlView" ref="304694784"/>
 								<int key="NSButtonFlags">-2033434624</int>
 								<int key="NSButtonFlags2">163</int>
 								<object class="NSCustomResource" key="NSNormalImage">
@@ -356,6 +358,35 @@
 				<int key="NSWindowCollectionBehavior">128</int>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
+			<object class="NSMenu" id="359179575">
+				<string key="NSTitle"/>
+				<array class="NSMutableArray" key="NSMenuItems">
+					<object class="NSMenuItem" id="222225634">
+						<reference key="NSMenu" ref="359179575"/>
+						<string key="NSTitle">Open</string>
+						<string type="base64-UTF8" key="NSKeyEquiv">DQ</string>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<object class="NSCustomResource" key="NSOnImage" id="164617781">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuCheckmark</string>
+						</object>
+						<object class="NSCustomResource" key="NSMixedImage" id="328245985">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuMixedState</string>
+						</object>
+					</object>
+					<object class="NSMenuItem" id="676255624">
+						<reference key="NSMenu" ref="359179575"/>
+						<string key="NSTitle">Delete</string>
+						<string type="base64-UTF8" key="NSKeyEquiv">CA</string>
+						<int key="NSKeyEquivModMask">1048576</int>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="164617781"/>
+						<reference key="NSMixedImage" ref="328245985"/>
+						<int key="NSTag">1</int>
+					</object>
+				</array>
+			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
@@ -403,9 +434,33 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">refreshButtonPressed:</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="297666668"/>
+						<reference key="destination" ref="1020722839"/>
 					</object>
 					<int key="connectionID">95</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">deleteMenu</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="676255624"/>
+					</object>
+					<int key="connectionID">101</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openMenuPressed:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="222225634"/>
+					</object>
+					<int key="connectionID">104</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">deleteMenuPressed:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="676255624"/>
+					</object>
+					<int key="connectionID">105</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -430,6 +485,14 @@
 						<reference key="destination" ref="1001"/>
 					</object>
 					<int key="connectionID">59</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menu</string>
+						<reference key="source" ref="532318968"/>
+						<reference key="destination" ref="359179575"/>
+					</object>
+					<int key="connectionID">100</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -588,7 +651,7 @@
 							<reference ref="291691964"/>
 							<reference ref="570039552"/>
 							<reference ref="248735598"/>
-							<reference ref="176394576"/>
+							<reference ref="304694784"/>
 						</array>
 						<reference key="parent" ref="756944966"/>
 					</object>
@@ -724,16 +787,35 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">91</int>
-						<reference key="object" ref="176394576"/>
+						<reference key="object" ref="304694784"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="297666668"/>
+							<reference ref="1020722839"/>
 						</array>
 						<reference key="parent" ref="714029937"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">92</int>
-						<reference key="object" ref="297666668"/>
-						<reference key="parent" ref="176394576"/>
+						<reference key="object" ref="1020722839"/>
+						<reference key="parent" ref="304694784"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">96</int>
+						<reference key="object" ref="359179575"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="222225634"/>
+							<reference ref="676255624"/>
+						</array>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">97</int>
+						<reference key="object" ref="222225634"/>
+						<reference key="parent" ref="359179575"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">98</int>
+						<reference key="object" ref="676255624"/>
+						<reference key="parent" ref="359179575"/>
 					</object>
 				</array>
 			</object>
@@ -778,12 +860,15 @@
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="91.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="92.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="96.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="97.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="98.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">95</int>
+			<int key="maxID">105</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -815,6 +900,8 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="addArticle:">id</string>
 						<string key="build:">id</string>
+						<string key="deleteMenuPressed:">id</string>
+						<string key="openMenuPressed:">id</string>
 						<string key="refresh:">id</string>
 						<string key="refreshButtonPressed:">id</string>
 					</dictionary>
@@ -825,6 +912,14 @@
 						</object>
 						<object class="IBActionInfo" key="build:">
 							<string key="name">build:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="deleteMenuPressed:">
+							<string key="name">deleteMenuPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openMenuPressed:">
+							<string key="name">openMenuPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="refresh:">
@@ -863,6 +958,8 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NSAddTemplate">{8, 8}</string>
+			<string key="NSMenuCheckmark">{11, 11}</string>
+			<string key="NSMenuMixedState">{10, 3}</string>
 			<string key="NSRefreshTemplate">{10, 12}</string>
 		</dictionary>
 	</data>
