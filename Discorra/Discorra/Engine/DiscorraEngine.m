@@ -10,14 +10,19 @@
 
 @implementation DiscorraEngine
 
+//This is where the articles in .md format will go
 static const NSString* articlesFolder = @"articles/";
+//The output folder
 static const NSString* buildFolder = @"build/";
-static const NSString* stylesheetsFolder = @"css/";
-static const NSString* imagesFolder = @"img/";
-static const NSString* scriptsFolder = @"scripts/";
+//The ressources folder (content will be copied as-is to build/res/)
+static const NSString* ressourcesFolder = @"res/";
+//The template folder
 static const NSString* templatesFolder = @"tpl/";
+//Article template
 static const NSString* templateArticle = @"article.mustache";
+//Index (article list) template
 static const NSString* templateIndex = @"index.mustache";
+//Base template (can be overriden in any sub template by putting a <!-- Discorra:OverrideBaseTemplate -->
 static const NSString* templateBase = @"base.mustache";
 
 -(id) initWithPath:(NSString*)path {
