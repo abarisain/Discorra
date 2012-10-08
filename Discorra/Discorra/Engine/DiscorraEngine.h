@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "Article.h"
 
-#define SUMMARY_CHARACTERS_LIMIT 200
+#define SUMMARY_CHARACTERS_LIMIT 1000
 
 
 @interface DiscorraEngine : NSObject {
