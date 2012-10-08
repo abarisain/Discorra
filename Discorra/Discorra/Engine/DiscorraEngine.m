@@ -131,7 +131,6 @@ static NSString* const templateBase = @"base.mustache";
         if(![filePath hasSuffix:@".md" caseInsensitive:YES] || ![fileManager fileExistsAtPath:filePath isDirectory:&isDir] || isDir)
             continue;
         error = nil;
-        NSLog(@"%@", filePath);
         fileContent = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
         if(error != nil) {
             NSLog(@"Error while reading article %@ : %@", filePath, [error localizedDescription]);
@@ -142,6 +141,7 @@ static NSString* const templateBase = @"base.mustache";
         article = [[Article alloc] init];
         NSMutableArray *fileContentArray = [[fileContent componentsSeparatedByString:@"\n"] mutableCopy];
         article.date = [[fileManager attributesOfItemAtPath:filePath error:NULL] fileModificationDate];
+        article.path = filePath;
         article.title = [fileContentArray objectAtIndex:0];
         [fileContentArray removeObjectAtIndex:0];
         if([fileContentArray count] > 0) {
