@@ -120,6 +120,10 @@ static NSString* const templateBase = @"base.mustache";
 }
 
 - (NSArray*)articles {
+    return [self articlesWithFullContent:NO];
+}
+
+- (NSArray*)articlesWithFullContent:(bool)loadContent {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *baseDirectory = [self articleFolderPath];
     NSError *error = nil;
@@ -147,9 +151,12 @@ static NSString* const templateBase = @"base.mustache";
         article.title = [fileContentArray objectAtIndex:0];
         [fileContentArray removeObjectAtIndex:0];
         if([fileContentArray count] > 0) {
-            NSString *fullSummary = [fileContentArray componentsJoinedByString:@" "];
-            article.content = [fileContentArray componentsJoinedByString:@"\n"];
-            article.summary = [fullSummary substringToIndex:MIN(fullSummary.length, SUMMARY_CHARACTERS_LIMIT)];
+            if(loadContent) {
+                article.content = [MMMarkdown HTMLStringWithMarkdown:[fileContentArray componentsJoinedByString:@"\n"] error:nil];
+            } else {
+                NSString *fullSummary = [fileContentArray componentsJoinedByString:@" "];
+                article.summary = [fullSummary substringToIndex:MIN(fullSummary.length, SUMMARY_CHARACTERS_LIMIT)];
+            }
         }
         [articles addObject:article];
     }

@@ -26,6 +26,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "MMMarkdown.h"
 #import "Article.h"
 
 #define SUMMARY_CHARACTERS_LIMIT 1000
@@ -40,6 +41,7 @@
 - (bool)createSkeleton;
 - (NSString*)articleFolderPath;
 - (NSArray*)articles;
+- (NSArray*)articlesWithFullContent:(bool)loadContent;
 - (NSString*)ressourcesFolderPath;
 - (NSString*)buildFolderPath;
 - (bool)build;
