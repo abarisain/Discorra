@@ -10,7 +10,15 @@
 
 @implementation DiscorraEngine
 
-static const NSString* articlesFolder = @"OldValue";
+static const NSString* articlesFolder = @"articles/";
+static const NSString* buildFolder = @"build/";
+static const NSString* stylesheetsFolder = @"css/";
+static const NSString* imagesFolder = @"img/";
+static const NSString* scriptsFolder = @"scripts/";
+static const NSString* templatesFolder = @"tpl/";
+static const NSString* templateArticle = @"article.mustache";
+static const NSString* templateIndex = @"index.mustache";
+static const NSString* templateBase = @"base.mustache";
 
 -(id) initWithPath:(NSString*)path {
     self = [super init];
