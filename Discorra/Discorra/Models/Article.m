@@ -28,6 +28,6 @@
 #import "Article.h"
 
 @implementation Article
-@synthesize title, date, path, summary, content;
+@synthesize title, date, dateString, path, summary, content;
 
 @end

@@ -132,6 +132,11 @@ static NSString* const templateBase = @"base.mustache";
     NSString *fileContent;
     Article *article;
     BOOL isDir = false;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+
     for(__strong NSString *filePath in files) {
         filePath = [baseDirectory stringByAppendingPathComponent:filePath];
         if(![filePath hasSuffix:@".md" caseInsensitive:YES] || ![fileManager fileExistsAtPath:filePath isDirectory:&isDir] || isDir)
@@ -147,6 +152,7 @@ static NSString* const templateBase = @"base.mustache";
         article = [[Article alloc] init];
         NSMutableArray *fileContentArray = [[fileContent componentsSeparatedByString:@"\n"] mutableCopy];
         article.date = [[fileManager attributesOfItemAtPath:filePath error:NULL] fileModificationDate];
+        article.dateString = [dateFormatter stringFromDate:article.date];
         article.path = filePath;
         article.title = [fileContentArray objectAtIndex:0];
         [fileContentArray removeObjectAtIndex:0];
