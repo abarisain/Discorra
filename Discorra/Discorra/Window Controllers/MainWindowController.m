@@ -78,6 +78,12 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self.tableView setTarget:self];
+    [self.tableView setDoubleAction:@selector(editMenuPressed:)];
+}
+
 - (void)windowDidLoad
 {
     [super windowDidLoad];
