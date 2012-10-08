@@ -47,7 +47,7 @@ static NSString* const templateBase = @"base.mustache";
 - (id)initWithPath:(NSString*)path {
     self = [super init];
     if(self != nil) {
-        targetPath = [NSString stringWithString:path];
+        _targetPath = [NSString stringWithString:path];
     }
     return self;
 }
@@ -64,16 +64,16 @@ static NSString* const templateBase = @"base.mustache";
                                  templateBase,
                                  nil];
     BOOL isDirectory = NO;
-    if(targetPath == nil ||
-       !([fileManager fileExistsAtPath:targetPath isDirectory:&isDirectory] && isDirectory)) {
+    if(_targetPath == nil ||
+       !([fileManager fileExistsAtPath:_targetPath isDirectory:&isDirectory] && isDirectory)) {
         return NO;
     }
     for(NSString* tmp in foldersToCheck) {
-        if(!([fileManager fileExistsAtPath:[targetPath stringByAppendingPathComponent:tmp] isDirectory:&isDirectory] && isDirectory)) {
+        if(!([fileManager fileExistsAtPath:[_targetPath stringByAppendingPathComponent:tmp] isDirectory:&isDirectory] && isDirectory)) {
             return NO;
         }
     }
-    NSString *templateBasePath = [targetPath stringByAppendingPathComponent:templatesFolder];
+    NSString *templateBasePath = [_targetPath stringByAppendingPathComponent:templatesFolder];
     for(NSString* tmp in templatesToCheck) {
         if(!([fileManager fileExistsAtPath:[templateBasePath stringByAppendingPathComponent:tmp] isDirectory:&isDirectory] && !isDirectory)) {
             return NO;
@@ -96,13 +96,13 @@ static NSString* const templateBase = @"base.mustache";
                                  nil];
     NSError *error = nil;
     for(NSString* tmp in folders) {
-        if(![fileManager createDirectoryAtPath:[targetPath stringByAppendingPathComponent:tmp] withIntermediateDirectories:YES attributes:nil error:&error]) {
+        if(![fileManager createDirectoryAtPath:[_targetPath stringByAppendingPathComponent:tmp] withIntermediateDirectories:YES attributes:nil error:&error]) {
             //Todo : manage error
             NSLog(@"Error while creating skeleton %@ : %@", tmp, [error localizedDescription]);
             return false;
         }
     }
-    NSString *templateBasePath = [targetPath stringByAppendingPathComponent:templatesFolder];
+    NSString *templateBasePath = [_targetPath stringByAppendingPathComponent:templatesFolder];
     for(NSString* tmp in templates) {
         if(![fileManager createFileAtPath:[templateBasePath stringByAppendingPathComponent:tmp] contents:[NSData data] attributes:nil]) {
             NSLog(@"Error while creating template file : %@", tmp);

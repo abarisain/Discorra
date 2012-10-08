@@ -28,11 +28,13 @@
 #import <Foundation/Foundation.h>
 
 @interface DiscorraEngine : NSObject {
-    NSString *targetPath;
+    NSString *_targetPath;
 }
 
 - (id)initWithPath:(NSString*)path;
 - (bool)checkIfValidFolder;
 - (bool)createSkeleton;
+
+@property (readonly) NSString* targetPath;
 
 @end
