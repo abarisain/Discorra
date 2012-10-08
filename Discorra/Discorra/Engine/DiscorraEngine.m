@@ -113,6 +113,8 @@ static NSString* const templateBase = @"base.mustache";
     return true;
 }
 
+#pragma mark Article methods
+
 - (NSString*)articleFolderPath {
     return [_targetPath stringByAppendingPathComponent:articlesFolder];
 }
@@ -151,6 +153,27 @@ static NSString* const templateBase = @"base.mustache";
         [articles addObject:article];
     }
     return [NSArray arrayWithArray:articles];
+}
+
+#pragma mark Build methods
+
+- (NSString*)buildFolderPath {
+    return [_targetPath stringByAppendingPathComponent:buildFolder];
+}
+
+- (bool)build {
+    if(![self cleanBuildFolder])
+        return NO;
+    return YES;
+}
+
+- (bool)cleanBuildFolder {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if(![fileManager removeItemAtPath:[self buildFolderPath] error:nil])
+        return NO;
+    if(![fileManager createDirectoryAtPath:[self buildFolderPath] withIntermediateDirectories:YES attributes:nil error:nil])
+        return NO;
+    return YES;
 }
 
 @end
