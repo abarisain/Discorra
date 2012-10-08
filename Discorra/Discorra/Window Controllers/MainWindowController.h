@@ -47,11 +47,16 @@
 - (IBAction)globalArticleDelete:(id)sender;
 - (void)pathDoesNotContainBlog;
 - (void)alertDidEnd:(NSAlert*)alert returnCode:(int)button contextInfo:(void*)context;
+- (void)buildSuccessAlertDidEnd:(NSAlert*)alert returnCode:(int)button contextInfo:(void*)context;
 - (void)refreshData;
+- (void)build;
 - (void)editArticle:(Article*)article;
 - (void)deleteArticle:(Article*)article;
 
 @property (weak) IBOutlet NSTextField *statusbarText;
 @property (weak) IBOutlet NSTableView *tableView;
+@property (weak) IBOutlet NSProgressIndicator *inderterminateProgress;
+@property (weak) IBOutlet NSButton *buildButton;
+
 
 @end

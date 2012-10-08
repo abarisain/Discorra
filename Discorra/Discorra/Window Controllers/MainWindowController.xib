@@ -16,6 +16,7 @@
 			<string>NSCustomObject</string>
 			<string>NSMenu</string>
 			<string>NSMenuItem</string>
+			<string>NSProgressIndicator</string>
 			<string>NSScrollView</string>
 			<string>NSScroller</string>
 			<string>NSTableCellView</string>
@@ -98,7 +99,7 @@
 							<string key="NSFrame">{{42, 3}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="714029937"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="248735598"/>
+							<reference key="NSNextKeyView" ref="241776944"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="675684604">
@@ -346,6 +347,18 @@
 							</object>
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
+						<object class="NSProgressIndicator" id="241776944">
+							<reference key="NSNextResponder" ref="714029937"/>
+							<int key="NSvFlags">293</int>
+							<string key="NSFrame">{{140, 6}, {226, 20}}</string>
+							<reference key="NSSuperview" ref="714029937"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="248735598"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<string key="NSHuggingPriority">{250, 250}</string>
+							<int key="NSpiFlags">24591</int>
+							<double key="NSMaxValue">100</double>
+						</object>
 					</array>
 					<string key="NSFrameSize">{506, 370}</string>
 					<reference key="NSSuperview"/>
@@ -463,6 +476,22 @@
 						<reference key="destination" ref="880947921"/>
 					</object>
 					<int key="connectionID">199</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">inderterminateProgress</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="241776944"/>
+					</object>
+					<int key="connectionID">230</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">buildButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="291691964"/>
+					</object>
+					<int key="connectionID">231</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -654,6 +683,7 @@
 							<reference ref="570039552"/>
 							<reference ref="248735598"/>
 							<reference ref="290258952"/>
+							<reference ref="241776944"/>
 						</array>
 						<reference key="parent" ref="756944966"/>
 					</object>
@@ -819,6 +849,11 @@
 						<reference key="object" ref="935879303"/>
 						<reference key="parent" ref="730197113"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">229</int>
+						<reference key="object" ref="241776944"/>
+						<reference key="parent" ref="714029937"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -843,6 +878,7 @@
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="21.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="229.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBWindowTemplateEditedContentRect">{{380, 496}, {480, 360}}</string>
 				<boolean value="YES" key="5.NSWindowTemplate.visibleAtLaunch"/>
@@ -870,7 +906,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">228</int>
+			<int key="maxID">231</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -939,10 +975,20 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="buildButton">NSButton</string>
+						<string key="inderterminateProgress">NSProgressIndicator</string>
 						<string key="statusbarText">NSTextField</string>
 						<string key="tableView">NSTableView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="buildButton">
+							<string key="name">buildButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="inderterminateProgress">
+							<string key="name">inderterminateProgress</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="statusbarText">
 							<string key="name">statusbarText</string>
 							<string key="candidateClassName">NSTextField</string>

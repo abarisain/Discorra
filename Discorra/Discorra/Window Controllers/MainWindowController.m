@@ -48,12 +48,14 @@
 }
 
 - (IBAction)build:(id)sender {
+    [self build];
 }
 
 - (IBAction)addArticle:(id)sender {
 }
 
 - (IBAction)refresh:(id)sender {
+    [self refreshData];
 }
 
 - (NSArray*) getFakeArticles {
@@ -82,6 +84,7 @@
     [super awakeFromNib];
     [self.tableView setTarget:self];
     [self.tableView setDoubleAction:@selector(editMenuPressed:)];
+    [self.inderterminateProgress stopAnimation:self];
 }
 
 - (void)windowDidLoad
@@ -108,7 +111,11 @@
 
 - (void)alertDidEnd:(NSAlert*)alert returnCode:(int)button contextInfo:(void*)context {
     switch (button) {
-        case NSAlertSecondButtonReturn:
+        case NSAlertFirstButtonReturn:
+            [[self window] close];
+            [(AppDelegate*)[NSApp delegate] openDocument:nil];
+            break;
+        default:
             if(![engine createSkeleton] || ![engine checkIfPathContainsBlog]) {
                 NSAlert *alert = [[NSAlert alloc] init];
                 [alert addButtonWithTitle:NSLocalizedString(@"Select another folder", @"Select another blog folder")];
@@ -120,13 +127,18 @@
                 [self refreshData];
             }
             break;
-        default:
-            [[self window] close];
-            [(AppDelegate*)[NSApp delegate] openDocument:nil];
-            break;
     }
 }
 
+- (void)buildSuccessAlertDidEnd:(NSAlert*)alert returnCode:(int)button contextInfo:(void*)context {
+    switch (button) {
+        case NSAlertFirstButtonReturn:
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:[engine buildFolderPath]]];
+            break;
+        default:
+            break;
+    }
+}
 
 #pragma mark NSTableViewDatasource
 
@@ -171,6 +183,27 @@
 }
 
 #pragma mark Helpers
+
+- (void)build {
+    [self.inderterminateProgress startAnimation:self];
+    [self.buildButton setEnabled:NO];
+    if(![engine build]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
+        [alert setMessageText:NSLocalizedString(@"Build error", nil)];
+        [alert setInformativeText:NSLocalizedString(@"The blog could not be built. Please check that you have write rights and that the disk is not full, then please try again.", @"Description of why blog build failed")];
+        [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:nil  contextInfo:nil];
+    } else {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"Open in Finder", @"Show in Finder")];
+        [alert addButtonWithTitle:NSLocalizedString(@"No", @"No")];
+        [alert setMessageText:NSLocalizedString(@"Build successful", nil)];
+        [alert setInformativeText:NSLocalizedString(@"Do you want to show the output in Finder ?", nil)];
+        [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(buildSuccessAlertDidEnd:returnCode:contextInfo:)  contextInfo:nil];
+    }
+    [self.inderterminateProgress stopAnimation:self];
+    [self.buildButton setEnabled:YES];
+}
 
 - (void)pathDoesNotContainBlog {
     NSAlert *alert = [[NSAlert alloc] init];
