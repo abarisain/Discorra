@@ -40,6 +40,7 @@
 - (bool)createSkeleton;
 - (NSString*)articleFolderPath;
 - (NSArray*)articles;
+- (NSString*)ressourcesFolderPath;
 - (NSString*)buildFolderPath;
 - (bool)build;
 - (bool)cleanBuildFolder;

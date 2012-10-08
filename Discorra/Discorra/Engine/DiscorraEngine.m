@@ -157,6 +157,10 @@ static NSString* const templateBase = @"base.mustache";
 
 #pragma mark Build methods
 
+- (NSString*)ressourcesFolderPath {
+    return [_targetPath stringByAppendingPathComponent:ressourcesFolder];
+}
+
 - (NSString*)buildFolderPath {
     return [_targetPath stringByAppendingPathComponent:buildFolder];
 }
@@ -164,14 +168,19 @@ static NSString* const templateBase = @"base.mustache";
 - (bool)build {
     if(![self cleanBuildFolder])
         return NO;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *buildFolder = [self buildFolderPath];
+    if(![fileManager copyItemAtPath:[self ressourcesFolderPath] toPath:[buildFolder stringByAppendingPathComponent:ressourcesFolder] error:nil])
+        return NO;
     return YES;
 }
 
 - (bool)cleanBuildFolder {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if(![fileManager removeItemAtPath:[self buildFolderPath] error:nil])
+    NSString *buildFolder = [self buildFolderPath];
+    if(![fileManager removeItemAtPath:buildFolder error:nil])
         return NO;
-    if(![fileManager createDirectoryAtPath:[self buildFolderPath] withIntermediateDirectories:YES attributes:nil error:nil])
+    if(![fileManager createDirectoryAtPath:buildFolder withIntermediateDirectories:YES attributes:nil error:nil])
         return NO;
     return YES;
 }
