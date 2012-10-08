@@ -32,6 +32,7 @@
     NSMutableArray *windowControllers;
 }
 
+- (IBAction)openDocument:(id)sender;
 - (void)addWindowController:(NSWindowController *) controller;
 - (void)removeWindowController:(NSWindowController *) controller;
 

@@ -28,10 +28,12 @@
 #import <Cocoa/Cocoa.h>
 #import "AppDelegate.h"
 #import "ArticleSummaryTableCellView.h"
+#import "DiscorraEngine.h"
 
 @interface MainWindowController : NSWindowController <NSWindowDelegate, NSTableViewDataSource> {
     NSString *blogPath;
     NSArray *tableData;
+    DiscorraEngine *engine;
 }
 
 - (NSArray*) getFakeArticles;

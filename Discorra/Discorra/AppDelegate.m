@@ -39,6 +39,7 @@
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
     [openDlg setCanChooseFiles:NO];
     [openDlg setCanChooseDirectories:YES];
+    [openDlg setCanCreateDirectories:YES];
 
     if ([openDlg runModal] == NSOKButton )
     {

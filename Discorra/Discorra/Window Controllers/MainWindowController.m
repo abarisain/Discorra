@@ -45,6 +45,7 @@
     if(self != nil) {
         tableData = [self getFakeArticles];
         blogPath = [NSString stringWithString:path];
+        engine = [[DiscorraEngine alloc] initWithPath:blogPath];
     }
     return self;
 }
@@ -82,6 +83,14 @@
     [super windowDidLoad];
     //Apply some custom style to the text
     [[self.statusbarText cell] setBackgroundStyle:NSBackgroundStyleRaised];
+    if(![engine checkIfPathContainsBlog]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"Select another folder", @"Select another blog folder")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Create a blog here", @"Create a blog")];
+        [alert setMessageText:NSLocalizedString(@"Create a blog in this directory ?", @"Ask for wether or not a blog should be created here")];
+        [alert setInformativeText:NSLocalizedString(@"The selected folder is not a blog. Do you want to create a blog here or open another folder ?", @"Description of why a blog might be created (invalid folder)")];
+        [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+    }
     [self refreshData];
 }
 
@@ -89,6 +98,29 @@
 {
     [((AppDelegate*)[NSApp delegate]) removeWindowController:self];
 }
+
+#pragma mark Alert callbacks
+
+- (void)alertDidEnd:(NSAlert*) returnCode:(int)button contextInfo:(void*)context {
+    switch (button) {
+        case NSAlertSecondButtonReturn:
+            if(![engine createSkeleton] || ![engine checkIfPathContainsBlog]) {
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert addButtonWithTitle:NSLocalizedString(@"Select another folder", @"Select another blog folder")];
+                [alert addButtonWithTitle:NSLocalizedString(@"Try again", @"Try again")];
+                [alert setMessageText:NSLocalizedString(@"Blog creation failed", @"Blog creation failed")];
+                [alert setInformativeText:NSLocalizedString(@"The blog skeleton could not be created in the specified folder. Please check that you have write rights and that the disk is not full, then please try again.", @"Description of why blog creation failed")];
+                [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+            } else {
+                [self refreshData];
+            }
+        default:
+            [(AppDelegate*)[NSApp delegate] openDocument:nil];
+            [[self window] close];
+            break;
+    }
+}
+
 
 #pragma mark NSTableViewDatasource
 
