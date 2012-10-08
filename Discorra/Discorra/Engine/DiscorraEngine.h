@@ -32,7 +32,7 @@
 }
 
 - (id)initWithPath:(NSString*)path;
-- (bool)checkIfValidFolder;
+- (bool)checkIfPathContainsBlog;
 - (bool)createSkeleton;
 
 @property (readonly) NSString* targetPath;

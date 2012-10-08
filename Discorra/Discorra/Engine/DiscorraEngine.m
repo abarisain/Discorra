@@ -52,7 +52,7 @@ static NSString* const templateBase = @"base.mustache";
     return self;
 }
 
-- (bool)checkIfValidFolder {
+- (bool)checkIfPathContainsBlog {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *foldersToCheck = [NSArray arrayWithObjects:articlesFolder,
                                                 buildFolder,
