@@ -29,6 +29,6 @@
 
 @interface NSString (InsensitiveComparaison)
 
-- (bool)hasSuffix:(NSString*)suffix;
+- (bool)hasSuffix:(NSString*)suffix caseInsensitive:(bool)insensitive;
 
 @end

@@ -29,8 +29,8 @@
 
 @implementation NSString (InsensitiveComparaison)
 
-- (bool)hasSuffix:(NSString*)suffix {
-    return [[self lowercaseString] hasSuffix:[suffix lowercaseString]];
+- (bool)hasSuffix:(NSString*)suffix caseInsensitive:(bool)insensitive {
+    return insensitive ? [[self lowercaseString] hasSuffix:[suffix lowercaseString]] : [self hasSuffix:suffix];
 }
 
 @end
