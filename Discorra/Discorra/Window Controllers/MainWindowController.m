@@ -42,8 +42,10 @@
 - (id)initWithBlogPath:(NSString *) path
 {
     self = [super initWithWindowNibName:@"MainWindowController"];
-    tableData = [self getFakeArticles];
-    blogPath = [NSString stringWithString:path];
+    if(self != nil) {
+        tableData = [self getFakeArticles];
+        blogPath = [NSString stringWithString:path];
+    }
     return self;
 }
 
