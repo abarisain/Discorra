@@ -57,6 +57,9 @@
 - (IBAction)addArticle:(id)sender {
 }
 
+- (IBAction)refresh:(id)sender {
+}
+
 - (NSArray*) getFakeArticles {
     Article* a1 = [[Article alloc] init];
     a1.date = [NSDate dateWithString:@"2012-07-24 10:45:32 +0100"];
@@ -144,6 +147,10 @@
     [alert setMessageText:NSLocalizedString(@"Create a blog in this directory ?", @"Ask for wether or not a blog should be created here")];
     [alert setInformativeText:NSLocalizedString(@"The selected folder is not a blog. Do you want to create a blog here or open another folder ?", @"Description of why a blog might be created (invalid folder)")];
     [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
+
+- (IBAction)refreshButtonPressed:(id)sender {
+    [self refreshData];
 }
 
 - (void)refreshData {

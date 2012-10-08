@@ -40,8 +40,10 @@
 - (id)initWithBlogPath:(NSString *) path;
 - (IBAction)build:(id)sender;
 - (IBAction)addArticle:(id)sender;
+- (IBAction)refreshButtonPressed:(id)sender;
 - (void)pathDoesNotContainBlog;
 - (void)alertDidEnd:(NSAlert*)alert returnCode:(int)button contextInfo:(void*)context;
+- (void)refreshData;
 
 @property (weak) IBOutlet NSTextField *statusbarText;
 @property (weak) IBOutlet NSTableView *tableView;
