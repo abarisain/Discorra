@@ -41,12 +41,14 @@
 - (IBAction)build:(id)sender;
 - (IBAction)addArticle:(id)sender;
 - (IBAction)refreshButtonPressed:(id)sender;
-- (IBAction)openMenuPressed:(id)sender;
+- (IBAction)editMenuPressed:(id)sender;
 - (IBAction)deleteMenuPressed:(id)sender;
+- (IBAction)globalArticleEdit:(id)sender;
+- (IBAction)globalArticleDelete:(id)sender;
 - (void)pathDoesNotContainBlog;
 - (void)alertDidEnd:(NSAlert*)alert returnCode:(int)button contextInfo:(void*)context;
 - (void)refreshData;
-- (void)openArticle:(Article*)article;
+- (void)editArticle:(Article*)article;
 - (void)deleteArticle:(Article*)article;
 
 @property (weak) IBOutlet NSTextField *statusbarText;

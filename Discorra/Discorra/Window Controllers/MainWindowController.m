@@ -140,12 +140,28 @@
     [self refreshData];
 }
 
-- (IBAction)openMenuPressed:(id)sender {
-    [self openArticle:[tableData objectAtIndex:self.tableView.clickedRow]];
+- (IBAction)editMenuPressed:(id)sender {
+    if(self.tableView.clickedRow < 0)
+        return;
+    [self editArticle:[tableData objectAtIndex:self.tableView.clickedRow]];
 }
 
 - (IBAction)deleteMenuPressed:(id)sender {
+    if(self.tableView.clickedRow < 0)
+        return;
     [self deleteArticle:[tableData objectAtIndex:self.tableView.clickedRow]];
+}
+
+- (IBAction)globalArticleEdit:(id)sender {
+    if(self.tableView.selectedRow < 0)
+        return;
+    [self editArticle:[tableData objectAtIndex:self.tableView.selectedRow]];
+}
+
+- (IBAction)globalArticleDelete:(id)sender {
+    if(self.tableView.selectedRow < 0)
+        return;
+    [self deleteArticle:[tableData objectAtIndex:self.tableView.selectedRow]];
 }
 
 #pragma mark Helpers
@@ -171,7 +187,7 @@
     [self statusbarText].stringValue = [NSString stringWithFormat:countFormat, [tableData count]];
 }
 
-- (void)openArticle:(Article*)article {
+- (void)editArticle:(Article*)article {
     [[NSWorkspace sharedWorkspace] openFile:article.path];
 }
 
