@@ -38,6 +38,7 @@
 - (id)initWithPath:(NSString*)path;
 - (bool)checkIfPathContainsBlog;
 - (bool)createSkeleton;
+- (NSString*)articleFolderPath;
 - (NSArray*)articles;
 
 @property (readonly) NSString* targetPath;

@@ -113,18 +113,25 @@ static NSString* const templateBase = @"base.mustache";
     return true;
 }
 
+- (NSString*)articleFolderPath {
+    return [_targetPath stringByAppendingPathComponent:articlesFolder];
+}
+
 - (NSArray*)articles {
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *baseDirectory = [self articleFolderPath];
     NSError *error = nil;
-    NSArray *files = [fileManager contentsOfDirectoryAtPath:_targetPath error:&error];
+    NSArray *files = [fileManager contentsOfDirectoryAtPath:baseDirectory error:&error];
     NSMutableArray *articles = [[NSMutableArray alloc] init];
     NSString *fileContent;
     Article *article;
     BOOL isDir = false;
-    for(NSString *filePath in files) {
-        if(![filePath hasSuffix:@".md" caseInsensitive:YES] || ![fileManager fileExistsAtPath:filePath isDirectory:&isDir] || !isDir)
+    for(__strong NSString *filePath in files) {
+        filePath = [baseDirectory stringByAppendingPathComponent:filePath];
+        if(![filePath hasSuffix:@".md" caseInsensitive:YES] || ![fileManager fileExistsAtPath:filePath isDirectory:&isDir] || isDir)
             continue;
         error = nil;
+        NSLog(@"%@", filePath);
         fileContent = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
         if(error != nil) {
             NSLog(@"Error while reading article %@ : %@", filePath, [error localizedDescription]);
