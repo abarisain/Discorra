@@ -148,6 +148,7 @@ static NSString* const templateBase = @"base.mustache";
         [fileContentArray removeObjectAtIndex:0];
         if([fileContentArray count] > 0) {
             NSString *fullSummary = [fileContentArray componentsJoinedByString:@" "];
+            article.content = [fileContentArray componentsJoinedByString:@"\n"];
             article.summary = [fullSummary substringToIndex:MIN(fullSummary.length, SUMMARY_CHARACTERS_LIMIT)];
         }
         [articles addObject:article];

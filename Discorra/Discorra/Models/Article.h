@@ -32,11 +32,13 @@
     NSDate *date;
     NSString *path;
     NSString *summary;
+    NSString *content;
 }
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSString *path;
 @property (nonatomic, strong) NSString *summary;
+@property (nonatomic, strong) NSString *content;
 
 @end
