@@ -82,4 +82,34 @@ static NSString* const templateBase = @"base.mustache";
     return YES;
 }
 
+//Returns if the skeleton creation suceeded
+- (bool)createSkeleton {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *folders = [NSArray arrayWithObjects:articlesFolder,
+                               buildFolder,
+                               ressourcesFolder,
+                               templatesFolder,
+                               nil];
+    NSArray *templates = [NSArray arrayWithObjects:templateArticle,
+                                 templateIndex,
+                                 templateBase,
+                                 nil];
+    NSError *error = nil;
+    for(NSString* tmp in folders) {
+        if(![fileManager createDirectoryAtPath:[targetPath stringByAppendingPathComponent:tmp] withIntermediateDirectories:YES attributes:nil error:&error]) {
+            //Todo : manage error
+            NSLog(@"Error while creating skeleton %@ : %@", tmp, [error localizedDescription]);
+            return false;
+        }
+    }
+    NSString *templateBasePath = [targetPath stringByAppendingPathComponent:templatesFolder];
+    for(NSString* tmp in templates) {
+        if(![fileManager createFileAtPath:[templateBasePath stringByAppendingPathComponent:tmp] contents:[NSData data] attributes:nil]) {
+            NSLog(@"Error while creating template file : %@", tmp);
+            return false;
+        }
+    }
+    return true;
+}
+
 @end

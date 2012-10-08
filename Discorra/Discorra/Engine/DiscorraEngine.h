@@ -32,5 +32,7 @@
 }
 
 - (id)initWithPath:(NSString*)path;
+- (bool)checkIfValidFolder;
+- (bool)createSkeleton;
 
 @end
