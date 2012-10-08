@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51A856171622C89F00079F38 /* DiscorraEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A856161622C89F00079F38 /* DiscorraEngine.m */; };
 		51C2D1DE16222AC30083352F /* libGRMustache5-MacOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C2D1DA16222AC30083352F /* libGRMustache5-MacOS.a */; };
 		51C2D1DF16222AC30083352F /* libMMMarkdown-Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C2D1DC16222AC30083352F /* libMMMarkdown-Mac.a */; };
 		51F08BFB1621D45B00A559B5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F08BFA1621D45B00A559B5 /* Cocoa.framework */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51A856151622C89F00079F38 /* DiscorraEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscorraEngine.h; path = Engine/DiscorraEngine.h; sourceTree = "<group>"; };
+		51A856161622C89F00079F38 /* DiscorraEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscorraEngine.m; path = Engine/DiscorraEngine.m; sourceTree = "<group>"; };
 		51C2D1C716222AC30083352F /* GRMustache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustache.h; sourceTree = "<group>"; };
 		51C2D1C816222AC30083352F /* GRMustacheAvailabilityMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheAvailabilityMacros.h; sourceTree = "<group>"; };
 		51C2D1C916222AC30083352F /* GRMustacheDynamicPartial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheDynamicPartial.h; sourceTree = "<group>"; };
@@ -80,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51A856101622C82F00079F38 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				51A856151622C89F00079F38 /* DiscorraEngine.h */,
+				51A856161622C89F00079F38 /* DiscorraEngine.m */,
+			);
+			name = Engine;
+			sourceTree = "<group>";
+		};
 		51C2D1C516222AC30083352F /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				51C2D1C516222AC30083352F /* Libraries */,
+				51A856101622C82F00079F38 /* Engine */,
 				51F08C281622079F00A559B5 /* Table Cells */,
 				51F08C241622065800A559B5 /* Models */,
 				51F08C231621E2C000A559B5 /* Windows */,
@@ -294,6 +307,7 @@
 				51F08C211621E2B500A559B5 /* MainWindowController.m in Sources */,
 				51F08C271622067800A559B5 /* Article.m in Sources */,
 				51F08C2B162207BA00A559B5 /* ArticleSummaryTableCellView.m in Sources */,
+				51A856171622C89F00079F38 /* DiscorraEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
