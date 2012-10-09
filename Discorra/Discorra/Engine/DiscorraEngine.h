@@ -42,14 +42,18 @@
 - (bool)checkIfPathContainsBlog;
 - (bool)createSkeleton;
 - (NSString*)articleFolderPath;
+- (NSString*)builtArticlePath:(Article*)article;
 - (NSArray*)articles;
 - (NSArray*)articlesWithFullContent:(bool)loadContent;
 - (NSString*)ressourcesFolderPath;
 - (NSString*)buildFolderPath;
+- (NSString*)templatesFolderPath;
 - (bool)build;
 - (bool)cleanBuildFolder;
 - (NSString*)buildPage:(Page*)page;
 - (NSString*)buildArticle:(Article*)article;
+- (bool)writeBuiltPage:(NSString*)string toFile:(NSString*)filePath;
+- (bool)writeArticle:(Article*)article;
 
 @property (readonly) NSString* targetPath;
 

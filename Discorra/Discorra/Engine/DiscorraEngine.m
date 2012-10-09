@@ -119,6 +119,10 @@ static NSString* const templateBase = @"base.mustache";
     return [_targetPath stringByAppendingPathComponent:articlesFolder];
 }
 
+- (NSString*)builtArticlePath:(Article*)article {
+    return [[self buildFolderPath] stringByAppendingPathComponent:[[[article.path lastPathComponent] stringByDeletingPathExtension] stringByAppendingString:@".html"]];
+}
+
 - (NSArray*)articles {
     return [self articlesWithFullContent:NO];
 }
@@ -181,6 +185,10 @@ static NSString* const templateBase = @"base.mustache";
     return [_targetPath stringByAppendingPathComponent:buildFolder];
 }
 
+- (NSString*)templatesFolderPath {
+    return [_targetPath stringByAppendingPathComponent:templatesFolder];
+}
+
 - (bool)build {
     if(![self cleanBuildFolder])
         return NO;
@@ -188,6 +196,11 @@ static NSString* const templateBase = @"base.mustache";
     NSString *buildFolder = [self buildFolderPath];
     if(![fileManager copyItemAtPath:[self ressourcesFolderPath] toPath:[buildFolder stringByAppendingPathComponent:ressourcesFolder] error:nil])
         return NO;
+    NSArray *articles = [self articlesWithFullContent:YES];
+    for(Article *article in articles) {
+        if(![self writeArticle:article])
+            return NO;
+    }
     return YES;
 }
 
@@ -202,18 +215,40 @@ static NSString* const templateBase = @"base.mustache";
 }
 
 - (NSString*)buildPage:(Page*)page {
-    return [GRMustacheTemplate renderObject:page
-                               fromContentsOfFile:[[self buildFolderPath] stringByAppendingPathComponent:templateBase]
-                               error:nil];
+    NSError *err = nil;
+    NSString *result = [GRMustacheTemplate renderObject:page
+                        fromContentsOfFile:[[self templatesFolderPath] stringByAppendingPathComponent:templateBase]
+                                     error:&err];
+    if(err != nil)
+        NSLog(@"%@", [err localizedDescription]);
+    return result;
 }
 
 - (NSString*)buildArticle:(Article*)article {
+    NSError *err = nil;
     Page* page = [[Page alloc] init];
     page.title = article.title;
     page.content = [GRMustacheTemplate renderObject:article
-                                    fromContentsOfFile:[[self buildFolderPath] stringByAppendingPathComponent:templateArticle]
-                                    error:nil];
+                                 fromContentsOfFile:[[self templatesFolderPath] stringByAppendingPathComponent:templateArticle]
+                                              error:&err];
+    if(err != nil)
+        NSLog(@"%@", [err localizedDescription]);
     return [self buildPage:page];
+}
+
+- (bool)writeBuiltPage:(NSString*)string toFile:(NSString*)filePath {
+    NSError *err = nil;
+    bool result = [string writeToFile:filePath
+                 atomically:NO
+                   encoding:NSUTF8StringEncoding
+                      error:&err];
+    if(!result)
+        NSLog(@"%@", [err localizedDescription]);
+    return result;
+}
+
+- (bool)writeArticle:(Article*)article {
+    return [self writeBuiltPage:[self buildArticle:article] toFile:[self builtArticlePath:article]];
 }
 
 @end
