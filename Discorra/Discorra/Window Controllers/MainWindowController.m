@@ -187,7 +187,10 @@
 - (void)build {
     [self.inderterminateProgress startAnimation:self];
     [self.buildButton setEnabled:NO];
-    if(![engine build]) {
+    NSDate *start = [NSDate date];
+    bool buildResult = [engine build];
+    NSLog(@"Build time : %f", [start timeIntervalSinceNow]);
+    if(!buildResult) {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
         [alert setMessageText:NSLocalizedString(@"Build error", nil)];
