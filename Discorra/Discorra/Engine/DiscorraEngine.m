@@ -41,7 +41,7 @@ static NSString* const templatesFolder = @"tpl/";
 static NSString* const templateArticle = @"article.mustache";
 //Index (article list) template
 static NSString* const templateIndex = @"index.mustache";
-//Base template (can be overriden in any sub template by putting a <!-- Discorra:OverrideBaseTemplate -->
+//Base template (can be overriden in any sub template by putting a <!-- Discorra:OverrideBaseTemplate -->, well maybe someday.)
 static NSString* const templateBase = @"base.mustache";
 
 - (id)initWithPath:(NSString*)path {
@@ -151,7 +151,7 @@ static NSString* const templateBase = @"base.mustache";
             continue;
         article = [[Article alloc] init];
         NSMutableArray *fileContentArray = [[fileContent componentsSeparatedByString:@"\n"] mutableCopy];
-        article.date = [[fileManager attributesOfItemAtPath:filePath error:NULL] fileModificationDate];
+        article.date = [[fileManager attributesOfItemAtPath:filePath error:NULL] fileCreationDate];
         article.dateString = [dateFormatter stringFromDate:article.date];
         article.path = filePath;
         article.title = [fileContentArray objectAtIndex:0];
@@ -166,7 +166,9 @@ static NSString* const templateBase = @"base.mustache";
         }
         [articles addObject:article];
     }
-    return [NSArray arrayWithArray:articles];
+    return [articles sortedArrayUsingComparator:^(Article *obj1, Article *obj2) {
+                                                return [obj2.date compare:obj1.date];
+                                            }];
 }
 
 #pragma mark Build methods
@@ -200,7 +202,18 @@ static NSString* const templateBase = @"base.mustache";
 }
 
 - (NSString*)buildPage:(Page*)page {
-    
+    return [GRMustacheTemplate renderObject:page
+                               fromContentsOfFile:[[self buildFolderPath] stringByAppendingPathComponent:templateBase]
+                               error:nil];
+}
+
+- (NSString*)buildArticle:(Article*)article {
+    Page* page = [[Page alloc] init];
+    page.title = article.title;
+    page.content = [GRMustacheTemplate renderObject:article
+                                    fromContentsOfFile:[[self buildFolderPath] stringByAppendingPathComponent:templateArticle]
+                                    error:nil];
+    return [self buildPage:page];
 }
 
 @end

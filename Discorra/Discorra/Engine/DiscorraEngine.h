@@ -27,6 +27,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MMMarkdown.h"
+#import "GRMustache.h"
 #import "Article.h"
 #import "Page.h"
 
@@ -48,6 +49,7 @@
 - (bool)build;
 - (bool)cleanBuildFolder;
 - (NSString*)buildPage:(Page*)page;
+- (NSString*)buildArticle:(Article*)article;
 
 @property (readonly) NSString* targetPath;
 
