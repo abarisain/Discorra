@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSString *dateString;
 @property (nonatomic, strong) NSString *path;
+@property (nonatomic, strong) NSString *htmlPath;
 @property (nonatomic, strong) NSString *summary;
 @property (nonatomic, strong) NSString *content;
 

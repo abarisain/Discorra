@@ -43,6 +43,8 @@ static NSString* const templateArticle = @"article.mustache";
 static NSString* const templateIndex = @"index.mustache";
 //Base template (can be overriden in any sub template by putting a <!-- Discorra:OverrideBaseTemplate -->, well maybe someday.)
 static NSString* const templateBase = @"base.mustache";
+//RSS template (will not use base template)
+static NSString* const templateRss = @"rss.mustache";
 
 - (id)initWithPath:(NSString*)path {
     self = [super init];
@@ -62,6 +64,7 @@ static NSString* const templateBase = @"base.mustache";
     NSArray *templatesToCheck = [NSArray arrayWithObjects:templateArticle,
                                  templateIndex,
                                  templateBase,
+                                 templateRss,
                                  nil];
     BOOL isDirectory = NO;
     if(_targetPath == nil ||
@@ -93,6 +96,7 @@ static NSString* const templateBase = @"base.mustache";
     NSArray *templates = [NSArray arrayWithObjects:templateArticle,
                                  templateIndex,
                                  templateBase,
+                                 templateRss,
                                  nil];
     NSError *error = nil;
     for(NSString* tmp in folders) {
@@ -120,7 +124,7 @@ static NSString* const templateBase = @"base.mustache";
 }
 
 - (NSString*)builtArticlePath:(Article*)article {
-    return [[self buildFolderPath] stringByAppendingPathComponent:[[[article.path lastPathComponent] stringByDeletingPathExtension] stringByAppendingString:@".html"]];
+    return [[self buildFolderPath] stringByAppendingPathComponent:article.htmlPath];
 }
 
 - (NSArray*)articles {
@@ -158,6 +162,7 @@ static NSString* const templateBase = @"base.mustache";
         article.date = [[fileManager attributesOfItemAtPath:filePath error:NULL] fileCreationDate];
         article.dateString = [dateFormatter stringFromDate:article.date];
         article.path = filePath;
+        article.htmlPath = [[[filePath lastPathComponent] stringByDeletingPathExtension] stringByAppendingString:@".html"];
         article.title = [fileContentArray objectAtIndex:0];
         [fileContentArray removeObjectAtIndex:0];
         if([fileContentArray count] > 0) {
@@ -243,10 +248,27 @@ static NSString* const templateBase = @"base.mustache";
 }
 
 - (NSString*)buildIndexForArticles:(NSArray*)articles {
+    NSError *err = nil;
+    Page* page = [[Page alloc] init];
+    page.title = NSLocalizedString(@"Index", @"Blog index");
+    page.content = [GRMustacheTemplate renderObject:[NSDictionary dictionaryWithObjectsAndKeys:articles,@"articles", nil]
+                                 fromContentsOfFile:[[self templatesFolderPath] stringByAppendingPathComponent:templateIndex]
+                                              error:&err];
+    if(err != nil)
+        NSLog(@"%@", [err localizedDescription]);
+    return [self buildPage:page];
 }
 
 - (NSString*)buildRssForArticles:(NSArray*)articles {
-    
+    NSError *err = nil;
+    Page* page = [[Page alloc] init];
+    page.title = NSLocalizedString(@"RSS", @"Blog RSS");
+    page.content = [GRMustacheTemplate renderObject:[NSDictionary dictionaryWithObjectsAndKeys:articles,@"articles", nil]
+                                 fromContentsOfFile:[[self templatesFolderPath] stringByAppendingPathComponent:templateRss]
+                                              error:&err];
+    if(err != nil)
+        NSLog(@"%@", [err localizedDescription]);
+    return [self buildPage:page];
 }
 
 #pragma mark Writers
@@ -267,11 +289,11 @@ static NSString* const templateBase = @"base.mustache";
 }
 
 - (bool)writeIndexForArticles:(NSArray*)articles {
-    return YES;
+    return [self writeBuiltPage:[self buildIndexForArticles:articles] toFile:[[self buildFolderPath] stringByAppendingString:@"index.html"]];
 }
 
 - (bool)writeRssForArticles:(NSArray*)articles {
-    return YES;
+    return [self writeBuiltPage:[self buildRssForArticles:articles] toFile:[[self buildFolderPath] stringByAppendingString:@"rss.xml"]];
 }
 
 @end
