@@ -261,14 +261,12 @@ static NSString* const templateRss = @"rss.mustache";
 
 - (NSString*)buildRssForArticles:(NSArray*)articles {
     NSError *err = nil;
-    Page* page = [[Page alloc] init];
-    page.title = NSLocalizedString(@"RSS", @"Blog RSS");
-    page.content = [GRMustacheTemplate renderObject:[NSDictionary dictionaryWithObjectsAndKeys:articles,@"articles", nil]
+    NSString *content = [GRMustacheTemplate renderObject:[NSDictionary dictionaryWithObjectsAndKeys:articles,@"articles", nil]
                                  fromContentsOfFile:[[self templatesFolderPath] stringByAppendingPathComponent:templateRss]
                                               error:&err];
     if(err != nil)
         NSLog(@"%@", [err localizedDescription]);
-    return [self buildPage:page];
+    return content;
 }
 
 #pragma mark Writers
