@@ -189,7 +189,7 @@
     [self.buildButton setEnabled:NO];
     NSDate *start = [NSDate date];
     bool buildResult = [engine build];
-    NSLog(@"Build time : %f", [start timeIntervalSinceNow]);
+    NSLog(@"Build time : %f", -[start timeIntervalSinceNow]);
     if(!buildResult) {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];

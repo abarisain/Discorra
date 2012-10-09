@@ -206,9 +206,9 @@ static NSString* const templateRss = @"rss.mustache";
         if(![self writeArticle:article])
             return NO;
     }
-    if(![self buildIndexForArticles:articles])
+    if(![self writeIndexForArticles:articles])
         return NO;
-    if(![self buildRssForArticles:articles])
+    if(![self writeRssForArticles:articles])
         return NO;
     return YES;
 }
@@ -289,11 +289,11 @@ static NSString* const templateRss = @"rss.mustache";
 }
 
 - (bool)writeIndexForArticles:(NSArray*)articles {
-    return [self writeBuiltPage:[self buildIndexForArticles:articles] toFile:[[self buildFolderPath] stringByAppendingString:@"index.html"]];
+    return [self writeBuiltPage:[self buildIndexForArticles:articles] toFile:[[self buildFolderPath] stringByAppendingPathComponent:@"index.html"]];
 }
 
 - (bool)writeRssForArticles:(NSArray*)articles {
-    return [self writeBuiltPage:[self buildRssForArticles:articles] toFile:[[self buildFolderPath] stringByAppendingString:@"rss.xml"]];
+    return [self writeBuiltPage:[self buildRssForArticles:articles] toFile:[[self buildFolderPath] stringByAppendingPathComponent:@"rss.xml"]];
 }
 
 @end
