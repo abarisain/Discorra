@@ -52,8 +52,12 @@
 - (bool)cleanBuildFolder;
 - (NSString*)buildPage:(Page*)page;
 - (NSString*)buildArticle:(Article*)article;
+- (NSString*)buildIndexForArticles:(NSArray*)articles;
+- (NSString*)buildRssForArticles:(NSArray*)articles;
 - (bool)writeBuiltPage:(NSString*)string toFile:(NSString*)filePath;
 - (bool)writeArticle:(Article*)article;
+- (bool)writeIndexForArticles:(NSArray*)articles;
+- (bool)writeRssForArticles:(NSArray*)articles;
 
 @property (readonly) NSString* targetPath;
 

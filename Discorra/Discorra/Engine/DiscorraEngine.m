@@ -201,6 +201,10 @@ static NSString* const templateBase = @"base.mustache";
         if(![self writeArticle:article])
             return NO;
     }
+    if(![self buildIndexForArticles:articles])
+        return NO;
+    if(![self buildRssForArticles:articles])
+        return NO;
     return YES;
 }
 
@@ -213,6 +217,8 @@ static NSString* const templateBase = @"base.mustache";
         return NO;
     return YES;
 }
+
+#pragma mark Builders
 
 - (NSString*)buildPage:(Page*)page {
     NSError *err = nil;
@@ -236,6 +242,15 @@ static NSString* const templateBase = @"base.mustache";
     return [self buildPage:page];
 }
 
+- (NSString*)buildIndexForArticles:(NSArray*)articles {
+}
+
+- (NSString*)buildRssForArticles:(NSArray*)articles {
+    
+}
+
+#pragma mark Writers
+
 - (bool)writeBuiltPage:(NSString*)string toFile:(NSString*)filePath {
     NSError *err = nil;
     bool result = [string writeToFile:filePath
@@ -249,6 +264,14 @@ static NSString* const templateBase = @"base.mustache";
 
 - (bool)writeArticle:(Article*)article {
     return [self writeBuiltPage:[self buildArticle:article] toFile:[self builtArticlePath:article]];
+}
+
+- (bool)writeIndexForArticles:(NSArray*)articles {
+    return YES;
+}
+
+- (bool)writeRssForArticles:(NSArray*)articles {
+    return YES;
 }
 
 @end
