@@ -92,6 +92,7 @@
     [super windowDidLoad];
     //Apply some custom style to the text
     [[self.statusbarText cell] setBackgroundStyle:NSBackgroundStyleRaised];
+    [[self.previewText cell] setBackgroundStyle:NSBackgroundStyleRaised];
     if(![engine checkIfPathContainsBlog]) {
         //No animation if we execute this now
         [NSTimer scheduledTimerWithTimeInterval:0.1
@@ -219,6 +220,7 @@
 }
 
 - (void)refreshData {
+    self.previewText.stringValue = NSLocalizedString(@"Select an article on the left to preview it", nil);
     tableData = [engine articles];
     [[self tableView] reloadData];
     NSString *countFormat;

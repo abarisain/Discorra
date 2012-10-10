@@ -26,6 +26,7 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 #import "AppDelegate.h"
 #import "ArticleSummaryTableCellView.h"
 #import "DiscorraEngine.h"
@@ -57,6 +58,8 @@
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSProgressIndicator *inderterminateProgress;
 @property (weak) IBOutlet NSButton *buildButton;
+@property (weak) IBOutlet WebView *webView;
+@property (weak) IBOutlet NSTextField *previewText;
 
 
 @end
