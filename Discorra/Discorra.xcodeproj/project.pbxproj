@@ -10,6 +10,7 @@
 		5140B85C16231CE600A1A1DA /* NSString+InsensitiveComparaison.m in Sources */ = {isa = PBXBuildFile; fileRef = 5140B85B16231CE600A1A1DA /* NSString+InsensitiveComparaison.m */; };
 		5140B85F16238CA700A1A1DA /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 5140B85E16238CA700A1A1DA /* Page.m */; };
 		5140B86116257BF300A1A1DA /* Discorra.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5140B86016257BF300A1A1DA /* Discorra.icns */; };
+		5140B8631625821000A1A1DA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5140B8621625821000A1A1DA /* WebKit.framework */; };
 		51A856171622C89F00079F38 /* DiscorraEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A856161622C89F00079F38 /* DiscorraEngine.m */; };
 		51C2D1DE16222AC30083352F /* libGRMustache5-MacOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C2D1DA16222AC30083352F /* libGRMustache5-MacOS.a */; };
 		51C2D1DF16222AC30083352F /* libMMMarkdown-Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C2D1DC16222AC30083352F /* libMMMarkdown-Mac.a */; };
@@ -31,6 +32,7 @@
 		5140B85D16238CA700A1A1DA /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Page.h; path = Models/Page.h; sourceTree = "<group>"; };
 		5140B85E16238CA700A1A1DA /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Page.m; path = Models/Page.m; sourceTree = "<group>"; };
 		5140B86016257BF300A1A1DA /* Discorra.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Discorra.icns; sourceTree = SOURCE_ROOT; };
+		5140B8621625821000A1A1DA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		51A856151622C89F00079F38 /* DiscorraEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscorraEngine.h; path = Engine/DiscorraEngine.h; sourceTree = "<group>"; };
 		51A856161622C89F00079F38 /* DiscorraEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscorraEngine.m; path = Engine/DiscorraEngine.m; sourceTree = "<group>"; };
 		51C2D1C716222AC30083352F /* GRMustache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustache.h; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51F08BFB1621D45B00A559B5 /* Cocoa.framework in Frameworks */,
+				5140B8631625821000A1A1DA /* WebKit.framework in Frameworks */,
 				51C2D1DE16222AC30083352F /* libGRMustache5-MacOS.a in Frameworks */,
 				51C2D1DF16222AC30083352F /* libMMMarkdown-Mac.a in Frameworks */,
 			);
@@ -174,6 +177,7 @@
 		51F08BF91621D45B00A559B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5140B8621625821000A1A1DA /* WebKit.framework */,
 				51F08BFA1621D45B00A559B5 /* Cocoa.framework */,
 				51F08BFC1621D45B00A559B5 /* Other Frameworks */,
 			);

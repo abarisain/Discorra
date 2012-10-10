@@ -187,6 +187,7 @@
 - (void)build {
     [self.inderterminateProgress startAnimation:self];
     [self.buildButton setEnabled:NO];
+    [self refreshData];
     NSDate *start = [NSDate date];
     bool buildResult = [engine build];
     NSLog(@"Build time : %f", -[start timeIntervalSinceNow]);
