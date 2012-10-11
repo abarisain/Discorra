@@ -13,9 +13,9 @@
 		511FD041162701E3001772E5 /* base.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 511FD03B162701E3001772E5 /* base.mustache */; };
 		511FD042162701E3001772E5 /* index.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 511FD03C162701E3001772E5 /* index.mustache */; };
 		511FD043162701E3001772E5 /* rss.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 511FD03D162701E3001772E5 /* rss.mustache */; };
+		511FD0461627085A001772E5 /* Discorra.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 511FD0451627085A001772E5 /* Discorra.iconset */; };
 		5140B85C16231CE600A1A1DA /* NSString+InsensitiveComparaison.m in Sources */ = {isa = PBXBuildFile; fileRef = 5140B85B16231CE600A1A1DA /* NSString+InsensitiveComparaison.m */; };
 		5140B85F16238CA700A1A1DA /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 5140B85E16238CA700A1A1DA /* Page.m */; };
-		5140B86116257BF300A1A1DA /* Discorra.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5140B86016257BF300A1A1DA /* Discorra.icns */; };
 		5140B8631625821000A1A1DA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5140B8621625821000A1A1DA /* WebKit.framework */; };
 		51A856171622C89F00079F38 /* DiscorraEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A856161622C89F00079F38 /* DiscorraEngine.m */; };
 		51C2D1DE16222AC30083352F /* libGRMustache5-MacOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C2D1DA16222AC30083352F /* libGRMustache5-MacOS.a */; };
@@ -39,11 +39,11 @@
 		511FD03B162701E3001772E5 /* base.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = base.mustache; sourceTree = "<group>"; };
 		511FD03C162701E3001772E5 /* index.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index.mustache; sourceTree = "<group>"; };
 		511FD03D162701E3001772E5 /* rss.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = rss.mustache; sourceTree = "<group>"; };
+		511FD0451627085A001772E5 /* Discorra.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = Discorra.iconset; sourceTree = "<group>"; };
 		5140B85A16231CE600A1A1DA /* NSString+InsensitiveComparaison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+InsensitiveComparaison.h"; path = "Categories/NSString+InsensitiveComparaison.h"; sourceTree = "<group>"; };
 		5140B85B16231CE600A1A1DA /* NSString+InsensitiveComparaison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+InsensitiveComparaison.m"; path = "Categories/NSString+InsensitiveComparaison.m"; sourceTree = "<group>"; };
 		5140B85D16238CA700A1A1DA /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Page.h; path = Models/Page.h; sourceTree = "<group>"; };
 		5140B85E16238CA700A1A1DA /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Page.m; path = Models/Page.m; sourceTree = "<group>"; };
-		5140B86016257BF300A1A1DA /* Discorra.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Discorra.icns; sourceTree = SOURCE_ROOT; };
 		5140B8621625821000A1A1DA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		51A856151622C89F00079F38 /* DiscorraEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscorraEngine.h; path = Engine/DiscorraEngine.h; sourceTree = "<group>"; };
 		51A856161622C89F00079F38 /* DiscorraEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscorraEngine.m; path = Engine/DiscorraEngine.m; sourceTree = "<group>"; };
@@ -209,6 +209,7 @@
 		51F08BEB1621D45B00A559B5 = {
 			isa = PBXGroup;
 			children = (
+				511FD0451627085A001772E5 /* Discorra.iconset */,
 				51F08C001621D45B00A559B5 /* Discorra */,
 				51F08BF91621D45B00A559B5 /* Frameworks */,
 				51F08BF71621D45B00A559B5 /* Products */,
@@ -265,7 +266,6 @@
 		51F08C011621D45B00A559B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5140B86016257BF300A1A1DA /* Discorra.icns */,
 				51F08C021621D45B00A559B5 /* Discorra-Info.plist */,
 				51F08C031621D45B00A559B5 /* InfoPlist.strings */,
 				51F08C061621D45B00A559B5 /* main.m */,
@@ -367,13 +367,13 @@
 				51F08C0B1621D45B00A559B5 /* Credits.rtf in Resources */,
 				51F08C111621D45B00A559B5 /* MainMenu.xib in Resources */,
 				51F08C221621E2B500A559B5 /* MainWindowController.xib in Resources */,
-				5140B86116257BF300A1A1DA /* Discorra.icns in Resources */,
 				511FD03E162701E3001772E5 /* 2012-10-8_title.md in Resources */,
 				511FD03F162701E3001772E5 /* style.css in Resources */,
 				511FD040162701E3001772E5 /* article.mustache in Resources */,
 				511FD041162701E3001772E5 /* base.mustache in Resources */,
 				511FD042162701E3001772E5 /* index.mustache in Resources */,
 				511FD043162701E3001772E5 /* rss.mustache in Resources */,
+				511FD0461627085A001772E5 /* Discorra.iconset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
