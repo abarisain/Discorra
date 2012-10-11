@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+<channel>
+	<title>Your name</title>
+	<link>http://yourdomain.com/</link>
+	<description>Description</description>
+	{{#articles}}
+	<item>
+		<title>{{title}}</title>
+		<link>http://yourdomain.com/{{htmlPath}}</link>
+		<description>{{title}}</description>
+	</item>
+	{{/articles}}
+</channel>
+</rss>
