@@ -46,6 +46,7 @@
 - (IBAction)deleteMenuPressed:(id)sender;
 - (IBAction)globalArticleEdit:(id)sender;
 - (IBAction)globalArticleDelete:(id)sender;
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification;
 - (void)pathDoesNotContainBlog;
 - (void)alertDidEnd:(NSAlert*)alert returnCode:(int)button contextInfo:(void*)context;
 - (void)buildSuccessAlertDidEnd:(NSAlert*)alert returnCode:(int)button contextInfo:(void*)context;

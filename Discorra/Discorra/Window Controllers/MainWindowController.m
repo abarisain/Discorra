@@ -183,6 +183,26 @@
     [self deleteArticle:[tableData objectAtIndex:self.tableView.selectedRow]];
 }
 
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification {
+    if(self.tableView.selectedRow < 0) {
+        [self.webView setHidden:YES];
+        [self.webView setMainFrameURL:@"about:blank"];
+        self.previewText.stringValue = NSLocalizedString(@"Select an article on the left to preview it", nil);
+    } else {
+        NSString *articleBuiltPath = [engine builtArticlePath:[tableData objectAtIndex:self.tableView.selectedRow]];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        BOOL isDir = NO;
+        if(![fileManager fileExistsAtPath:articleBuiltPath isDirectory:&isDir] || isDir) {
+            [self.webView setHidden:YES];
+            [self.webView setMainFrameURL:@"about:blank"];
+            self.previewText.stringValue = NSLocalizedString(@"The selected article can not be previewed. Did you build the blog ?", nil);
+        } else {
+            [self.webView setHidden:NO];
+            [self.webView setMainFrameURL:[@"file://" stringByAppendingString:articleBuiltPath]];
+        }
+    }
+}
+
 #pragma mark Helpers
 
 - (void)build {
@@ -220,6 +240,8 @@
 }
 
 - (void)refreshData {
+    [self.webView setHidden:YES];
+    [self.webView setMainFrameURL:@"about:blank"];
     self.previewText.stringValue = NSLocalizedString(@"Select an article on the left to preview it", nil);
     tableData = [engine articles];
     [[self tableView] reloadData];
