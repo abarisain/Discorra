@@ -64,9 +64,9 @@
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSButton" id="570039552">
 							<reference key="NSNextResponder" ref="714029937"/>
-							<int key="NSvFlags">260</int>
+							<int key="NSvFlags">-2147483388</int>
 							<array class="NSMutableArray" key="NSSubviews"/>
-							<string key="NSFrame">{{9, 3}, {25, 25}}</string>
+							<string key="NSFrame">{{39, 3}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="714029937"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="290258952"/>
@@ -100,7 +100,7 @@
 							<reference key="NSNextResponder" ref="714029937"/>
 							<int key="NSvFlags">260</int>
 							<array class="NSMutableArray" key="NSSubviews"/>
-							<string key="NSFrame">{{42, 3}, {25, 25}}</string>
+							<string key="NSFrame">{{6, 3}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="714029937"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="111703474"/>
@@ -133,7 +133,6 @@
 							<string key="NSFrame">{{733, 3}, {71, 25}}</string>
 							<reference key="NSSuperview" ref="714029937"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="207454101">
@@ -790,12 +789,12 @@
 						<int key="objectID">6</int>
 						<reference key="object" ref="714029937"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="570039552"/>
-							<reference ref="290258952"/>
 							<reference ref="725181389"/>
 							<reference ref="291691964"/>
 							<reference ref="111703474"/>
 							<reference ref="248735598"/>
+							<reference ref="290258952"/>
+							<reference ref="570039552"/>
 						</array>
 						<reference key="parent" ref="756944966"/>
 					</object>
