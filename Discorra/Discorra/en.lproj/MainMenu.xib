@@ -247,6 +247,29 @@
 							</array>
 						</object>
 					</object>
+					<object class="NSMenuItem" id="132523881">
+						<reference key="NSMenu" ref="649796088"/>
+						<string key="NSTitle">Blog</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+						<string key="NSAction">submenuAction:</string>
+						<object class="NSMenu" key="NSSubmenu" id="942023485">
+							<string key="NSTitle">Blog</string>
+							<array class="NSMutableArray" key="NSMenuItems">
+								<object class="NSMenuItem" id="415212673">
+									<reference key="NSMenu" ref="942023485"/>
+									<string key="NSTitle">Build</string>
+									<string key="NSKeyEquiv">b</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+							</array>
+						</object>
+					</object>
 					<object class="NSMenuItem" id="732952423">
 						<reference key="NSMenu" ref="649796088"/>
 						<string key="NSTitle">Article</string>
@@ -419,6 +442,14 @@
 					</object>
 					<int key="connectionID">727</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">globalBlogBuild:</string>
+						<reference key="source" ref="1014"/>
+						<reference key="destination" ref="415212673"/>
+					</object>
+					<int key="connectionID">733</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -454,6 +485,7 @@
 							<reference ref="379814623"/>
 							<reference ref="448692316"/>
 							<reference ref="732952423"/>
+							<reference ref="132523881"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -665,6 +697,27 @@
 						<reference key="object" ref="1048313063"/>
 						<reference key="parent" ref="643378801"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">728</int>
+						<reference key="object" ref="132523881"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="942023485"/>
+						</array>
+						<reference key="parent" ref="649796088"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">729</int>
+						<reference key="object" ref="942023485"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="415212673"/>
+						</array>
+						<reference key="parent" ref="132523881"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">730</int>
+						<reference key="object" ref="415212673"/>
+						<reference key="parent" ref="942023485"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -699,7 +752,10 @@
 				<string key="720.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="721.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="722.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="728.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="729.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="73.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="730.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="82.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -709,7 +765,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">727</int>
+			<int key="maxID">733</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -737,6 +793,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="globalArticleDelete:">id</string>
 						<string key="globalArticleEdit:">id</string>
+						<string key="globalBlogBuild:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="globalArticleDelete:">
@@ -747,10 +804,105 @@
 							<string key="name">globalArticleEdit:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="globalBlogBuild:">
+							<string key="name">globalBlogBuild:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">MainWindowController</string>
+					<string key="superclassName">NSWindowController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="addArticle:">id</string>
+						<string key="build:">id</string>
+						<string key="deleteMenuPressed:">id</string>
+						<string key="editMenuPressed:">id</string>
+						<string key="globalArticleDelete:">id</string>
+						<string key="globalArticleEdit:">id</string>
+						<string key="globalBlogBuild:">id</string>
+						<string key="refresh:">id</string>
+						<string key="refreshButtonPressed:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="addArticle:">
+							<string key="name">addArticle:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="build:">
+							<string key="name">build:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="deleteMenuPressed:">
+							<string key="name">deleteMenuPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="editMenuPressed:">
+							<string key="name">editMenuPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="globalArticleDelete:">
+							<string key="name">globalArticleDelete:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="globalArticleEdit:">
+							<string key="name">globalArticleEdit:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="globalBlogBuild:">
+							<string key="name">globalBlogBuild:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="refresh:">
+							<string key="name">refresh:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="refreshButtonPressed:">
+							<string key="name">refreshButtonPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="buildButton">NSButton</string>
+						<string key="inderterminateProgress">NSProgressIndicator</string>
+						<string key="previewText">NSTextField</string>
+						<string key="statusbarText">NSTextField</string>
+						<string key="tableView">NSTableView</string>
+						<string key="webView">WebView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="buildButton">
+							<string key="name">buildButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="inderterminateProgress">
+							<string key="name">inderterminateProgress</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="previewText">
+							<string key="name">previewText</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="statusbarText">
+							<string key="name">statusbarText</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tableView">
+							<string key="name">tableView</string>
+							<string key="candidateClassName">NSTableView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="webView">
+							<string key="name">webView</string>
+							<string key="candidateClassName">WebView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/MainWindowController.h</string>
 					</object>
 				</object>
 			</array>

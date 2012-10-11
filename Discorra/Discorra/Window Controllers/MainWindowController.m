@@ -183,6 +183,10 @@
     [self deleteArticle:[tableData objectAtIndex:self.tableView.selectedRow]];
 }
 
+- (IBAction)globalBlogBuild:(id)sender {
+    [self build];
+}
+
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification {
     if(self.tableView.selectedRow < 0) {
         [self.webView setHidden:YES];
