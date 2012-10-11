@@ -107,11 +107,21 @@ static NSString* const templateRss = @"rss.mustache";
         }
     }
     //Todo : replace dummy files with real skeleton files
-    NSString *templateBasePath = [_targetPath stringByAppendingPathComponent:templatesFolder];
-    for(NSString* tmp in templates) {
-        if(![fileManager createFileAtPath:[templateBasePath stringByAppendingPathComponent:tmp] contents:[NSData data] attributes:nil]) {
-            NSLog(@"Error while creating template file : %@", tmp);
-            return false;
+    NSString* bundlePath = [[NSBundle mainBundle] resourcePath];
+    
+    NSArray* bundleFiles = [fileManager contentsOfDirectoryAtPath:bundlePath error:nil];
+    for(NSString* bundleFile in bundleFiles) {
+        if([bundleFile hasSuffix:@".md" caseInsensitive:YES]) {
+            if(![fileManager copyItemAtPath:[bundlePath stringByAppendingPathComponent:bundleFile] toPath:[[self articleFolderPath] stringByAppendingPathComponent:bundleFile] error:nil])
+                return false;
+        }
+        if([bundleFile hasSuffix:@".mustache" caseInsensitive:YES]) {
+            if(![fileManager copyItemAtPath:[bundlePath stringByAppendingPathComponent:bundleFile] toPath:[[self templatesFolderPath] stringByAppendingPathComponent:bundleFile] error:nil])
+                return false;
+        }
+        if([bundleFile hasSuffix:@".css" caseInsensitive:YES]) {
+            if(![fileManager copyItemAtPath:[bundlePath stringByAppendingPathComponent:bundleFile] toPath:[[self ressourcesFolderPath] stringByAppendingPathComponent:bundleFile] error:nil])
+                return false;
         }
     }
     return true;
