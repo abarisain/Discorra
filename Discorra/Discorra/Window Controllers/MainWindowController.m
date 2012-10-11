@@ -85,6 +85,7 @@
     [self.tableView setTarget:self];
     [self.tableView setDoubleAction:@selector(editMenuPressed:)];
     [self.inderterminateProgress stopAnimation:self];
+    [self.webView setMaintainsBackForwardList:NO];
 }
 
 - (void)windowDidLoad
@@ -202,7 +203,8 @@
             self.previewText.stringValue = NSLocalizedString(@"The selected article can not be previewed. Did you build the blog ?", nil);
         } else {
             [self.webView setHidden:NO];
-            [self.webView setMainFrameURL:[@"file://" stringByAppendingString:articleBuiltPath]];
+            //Append a random number to bypass the stupid WebKit caching
+            [self.webView setMainFrameURL:[NSString stringWithFormat:@"file://%@?random=%d", articleBuiltPath, arc4random()]];
         }
     }
 }
