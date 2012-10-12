@@ -188,6 +188,10 @@
     [self build];
 }
 
+- (IBAction)globalBlogRefresh:(id)sender {
+    [self refreshData];
+}
+
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification {
     if(self.tableView.selectedRow < 0) {
         [self.webView setHidden:YES];

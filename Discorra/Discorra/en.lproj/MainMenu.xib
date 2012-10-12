@@ -267,6 +267,15 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
+								<object class="NSMenuItem" id="671044615">
+									<reference key="NSMenu" ref="942023485"/>
+									<string key="NSTitle">Refresh</string>
+									<string key="NSKeyEquiv">r</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
 							</array>
 						</object>
 					</object>
@@ -449,6 +458,14 @@
 						<reference key="destination" ref="415212673"/>
 					</object>
 					<int key="connectionID">733</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">globalBlogRefresh:</string>
+						<reference key="source" ref="1014"/>
+						<reference key="destination" ref="671044615"/>
+					</object>
+					<int key="connectionID">735</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -710,12 +727,18 @@
 						<reference key="object" ref="942023485"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="415212673"/>
+							<reference ref="671044615"/>
 						</array>
 						<reference key="parent" ref="132523881"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">730</int>
 						<reference key="object" ref="415212673"/>
+						<reference key="parent" ref="942023485"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">734</int>
+						<reference key="object" ref="671044615"/>
 						<reference key="parent" ref="942023485"/>
 					</object>
 				</array>
@@ -756,6 +779,7 @@
 				<string key="729.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="73.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="730.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="734.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="82.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -765,7 +789,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">733</int>
+			<int key="maxID">735</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -794,6 +818,7 @@
 						<string key="globalArticleDelete:">id</string>
 						<string key="globalArticleEdit:">id</string>
 						<string key="globalBlogBuild:">id</string>
+						<string key="globalBlogRefresh:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="globalArticleDelete:">
@@ -806,6 +831,10 @@
 						</object>
 						<object class="IBActionInfo" key="globalBlogBuild:">
 							<string key="name">globalBlogBuild:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="globalBlogRefresh:">
+							<string key="name">globalBlogRefresh:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
@@ -825,7 +854,6 @@
 						<string key="globalArticleDelete:">id</string>
 						<string key="globalArticleEdit:">id</string>
 						<string key="globalBlogBuild:">id</string>
-						<string key="refresh:">id</string>
 						<string key="refreshButtonPressed:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -855,10 +883,6 @@
 						</object>
 						<object class="IBActionInfo" key="globalBlogBuild:">
 							<string key="name">globalBlogBuild:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="refresh:">
-							<string key="name">refresh:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="refreshButtonPressed:">

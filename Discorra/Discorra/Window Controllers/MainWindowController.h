@@ -47,6 +47,7 @@
 - (IBAction)globalArticleEdit:(id)sender;
 - (IBAction)globalArticleDelete:(id)sender;
 - (IBAction)globalBlogBuild:(id)sender;
+- (IBAction)globalBlogRefresh:(id)sender;
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification;
 - (void)pathDoesNotContainBlog;
 - (void)alertDidEnd:(NSAlert*)alert returnCode:(int)button contextInfo:(void*)context;
