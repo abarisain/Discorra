@@ -93,11 +93,6 @@ static NSString* const templateRss = @"rss.mustache";
                                ressourcesFolder,
                                templatesFolder,
                                nil];
-    NSArray *templates = [NSArray arrayWithObjects:templateArticle,
-                                 templateIndex,
-                                 templateBase,
-                                 templateRss,
-                                 nil];
     NSError *error = nil;
     for(NSString* tmp in folders) {
         if(![fileManager createDirectoryAtPath:[_targetPath stringByAppendingPathComponent:tmp] withIntermediateDirectories:YES attributes:nil error:&error]) {
@@ -106,7 +101,7 @@ static NSString* const templateRss = @"rss.mustache";
             return false;
         }
     }
-    //Todo : replace dummy files with real skeleton files
+
     NSString* bundlePath = [[NSBundle mainBundle] resourcePath];
     
     NSArray* bundleFiles = [fileManager contentsOfDirectoryAtPath:bundlePath error:nil];
