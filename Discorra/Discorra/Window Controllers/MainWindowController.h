@@ -30,6 +30,25 @@
 #import "AppDelegate.h"
 #import "ArticleSummaryTableCellView.h"
 #import "DiscorraEngine.h"
+#import "NSString+FilenameOperations.h"
+
+@class MainWindowController;
+
+@interface MainWindowNewArticlePanel : NSWindow <NSTextViewDelegate> {
+    NSDateFormatter *dateFormatter;
+}
+
+- (void)clearFields;
+- (IBAction)cancelButtonPressed:(id)sender;
+- (IBAction)createButtonPressed:(id)sender;
+
+@property (weak) IBOutlet NSButton *createButton;
+@property (weak) IBOutlet NSTextField *articleName;
+@property (weak) IBOutlet NSTextField *articleFilename;
+@property (weak) IBOutlet NSButton *openAfterCreation;
+@property (unsafe_unretained) IBOutlet MainWindowController *mainWindowController;
+
+@end
 
 @interface MainWindowController : NSWindowController <NSWindowDelegate, NSTableViewDataSource> {
     NSString *blogPath;
@@ -57,6 +76,8 @@
 - (void)build;
 - (void)editArticle:(Article*)article;
 - (void)deleteArticle:(Article*)article;
+- (DiscorraEngine*)engine;
+- (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 
 @property (weak) IBOutlet NSTextField *statusbarText;
 @property (weak) IBOutlet NSTableView *tableView;
@@ -64,20 +85,7 @@
 @property (weak) IBOutlet NSButton *buildButton;
 @property (weak) IBOutlet WebView *webView;
 @property (weak) IBOutlet NSTextField *previewText;
-@property (strong) IBOutlet MainWindowNewArticlePanel *newArticleWindow;
+@property (strong) IBOutlet MainWindowNewArticlePanel *createArticleWindow;
 
-
-@end
-
-@interface MainWindowNewArticlePanel : NSWindow {
-    
-}
-
-- (IBAction)cancelButtonPressed:(id)sender;
-- (IBAction)createButtonPressed:(id)sender;
-
-@property (weak) IBOutlet NSTextField *articleName;
-@property (weak) IBOutlet NSTextField *articleFilename;
-@property (weak) IBOutlet NSButton *openAfterCreation;
 
 @end

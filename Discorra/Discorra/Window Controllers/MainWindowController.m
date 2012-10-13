@@ -52,6 +52,12 @@
 }
 
 - (IBAction)addArticle:(id)sender {
+    [self.createArticleWindow clearFields];
+    [NSApp beginSheet: self.createArticleWindow
+       modalForWindow: self.window
+        modalDelegate: self
+       didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
+          contextInfo: nil];
 }
 
 - (IBAction)refresh:(id)sender {
@@ -107,6 +113,10 @@
 - (void)windowWillClose:(NSNotification *)notification
 {
     [((AppDelegate*)[NSApp delegate]) removeWindowController:self];
+}
+
+- (DiscorraEngine*)engine {
+    return engine;
 }
 
 #pragma mark Alert callbacks
@@ -167,13 +177,13 @@
 }
 
 - (IBAction)deleteMenuPressed:(id)sender {
-    [self addArticle:sender];
+    if(self.tableView.clickedRow < 0)
+        return;
+    [self deleteArticle:[tableData objectAtIndex:self.tableView.clickedRow]];
 }
 
 - (IBAction)globalArticleNew:(id)sender {
-    if(self.tableView.selectedRow < 0)
-        return;
-    [self editArticle:[tableData objectAtIndex:self.tableView.selectedRow]];
+    [self addArticle:sender];
 }
 
 - (IBAction)globalArticleEdit:(id)sender {
@@ -285,6 +295,17 @@
     [self refreshData];
 }
 
+#pragma mark Sheet callbacks
+
+- (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    [sheet orderOut:self];
+    if(returnCode > 0) {
+        [self refreshData];
+        if([tableData count] != 0 && self.createArticleWindow.openAfterCreation.state == NSOnState)
+                [self editArticle:[tableData objectAtIndex:0]];
+    }
+}
+
 @end
 
 @implementation MainWindowNewArticlePanel
@@ -293,11 +314,56 @@
     [super awakeFromNib];
 }
 
+- (void)clearFields {
+    self.articleName.stringValue = @"Article";
+    [self setFilenameFromName];
+    [self.openAfterCreation setState:NSOnState];
+}
+
+- (void)setFilenameFromName {
+    if(dateFormatter == nil) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    }
+    //We compute the date at each character because the date might change while the user types
+    self.articleFilename.stringValue = [NSString stringWithFormat:@"%@_%@.md",
+                                        [dateFormatter stringFromDate:[NSDate date]],
+                                        [self.articleName.stringValue.lowercaseString  sanitizedFileNameString]];
+}
+
+- (void)controlTextDidChange:(NSNotification *)notification {
+    if ([notification object] == self.articleName) {
+        [self setFilenameFromName];
+    }
+    [self.createButton setEnabled:(self.articleName.stringValue.length > 0 && self.articleFilename.stringValue.length > 0
+                                   && [self.articleFilename.stringValue rangeOfString:@"/"].location == NSNotFound
+                                   && [self.articleFilename.stringValue rangeOfString:@":"].location == NSNotFound)];
+}
+
 - (IBAction)cancelButtonPressed:(id)sender {
+    [NSApp endSheet:self returnCode:0];
 }
 
 - (IBAction)createButtonPressed:(id)sender {
+    if(self.articleName.stringValue.length > 0 && self.articleFilename.stringValue.length > 0
+       && [self.articleFilename.stringValue rangeOfString:@"/"].location == NSNotFound
+       && [self.articleFilename.stringValue rangeOfString:@":"].location == NSNotFound) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
+        [alert setMessageText:NSLocalizedString(@"Could not create the article", nil)];
+        [alert setInformativeText:NSLocalizedString(@"Invalid name or filename (/ and : are forbidden in filenames)", nil)];
+        [alert beginSheetModalForWindow:self modalDelegate:self didEndSelector:nil contextInfo:nil];
+    } else {
+        if(![[self.mainWindowController engine] newArticleWithTitle:self.articleName.stringValue andFilename:self.articleFilename.stringValue]) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
+            [alert setMessageText:NSLocalizedString(@"Could not create the article", nil)];
+            [alert setInformativeText:NSLocalizedString(@"Unknown error while writing the article file. Check that you volume isn't full and that you have write privileges on it.", nil)];
+            [alert beginSheetModalForWindow:self modalDelegate:self didEndSelector:nil contextInfo:nil];
+        } else {
+            [NSApp endSheet:self returnCode:1];
+        }
+    }
 }
-
 
 @end

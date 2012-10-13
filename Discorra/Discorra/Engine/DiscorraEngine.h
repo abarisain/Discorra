@@ -30,6 +30,7 @@
 #import "GRMustache.h"
 #import "Article.h"
 #import "Page.h"
+#import "NSString+FilenameOperations.h"
 
 #define SUMMARY_CHARACTERS_LIMIT 1000
 
@@ -58,6 +59,8 @@
 - (bool)writeArticle:(Article*)article;
 - (bool)writeIndexForArticles:(NSArray*)articles;
 - (bool)writeRssForArticles:(NSArray*)articles;
+- (bool)newArticleWithTitle:(NSString*)title;
+- (bool)newArticleWithTitle:(NSString*)title andFilename:(NSString*)filename;
 
 @property (readonly) NSString* targetPath;
 

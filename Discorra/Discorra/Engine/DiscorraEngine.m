@@ -299,4 +299,14 @@ static NSString* const templateRss = @"rss.mustache";
     return [self writeBuiltPage:[self buildRssForArticles:articles] toFile:[[self buildFolderPath] stringByAppendingPathComponent:@"rss.xml"]];
 }
 
+#pragma mark Article creation
+
+- (bool)newArticleWithTitle:(NSString*)title {
+    
+}
+
+- (bool)newArticleWithTitle:(NSString*)title andFilename:(NSString*)filename {
+    
+}
+
 @end
