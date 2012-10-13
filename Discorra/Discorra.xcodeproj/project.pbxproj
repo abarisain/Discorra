@@ -19,6 +19,7 @@
 		5140B8631625821000A1A1DA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5140B8621625821000A1A1DA /* WebKit.framework */; };
 		518DDD42162969050061B9EF /* NSString+FilenameOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 518DDD41162969050061B9EF /* NSString+FilenameOperations.m */; };
 		518DDD47162972030061B9EF /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 518DDD49162972030061B9EF /* MainWindowController.xib */; };
+		518DDD4F1629750D0061B9EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 518DDD4D1629750D0061B9EF /* Localizable.strings */; };
 		51A856171622C89F00079F38 /* DiscorraEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A856161622C89F00079F38 /* DiscorraEngine.m */; };
 		51C2D1DE16222AC30083352F /* libGRMustache5-MacOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C2D1DA16222AC30083352F /* libGRMustache5-MacOS.a */; };
 		51C2D1DF16222AC30083352F /* libMMMarkdown-Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C2D1DC16222AC30083352F /* libMMMarkdown-Mac.a */; };
@@ -54,6 +55,8 @@
 		518DDD4A162972080061B9EF /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindowController.xib; sourceTree = "<group>"; };
 		518DDD4B162974BE0061B9EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainWindowController.xib; sourceTree = "<group>"; };
 		518DDD4C162974BE0061B9EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		518DDD4E1629750D0061B9EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Discorra/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		518DDD50162975140061B9EF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Discorra/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		51A856151622C89F00079F38 /* DiscorraEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscorraEngine.h; path = Engine/DiscorraEngine.h; sourceTree = "<group>"; };
 		51A856161622C89F00079F38 /* DiscorraEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscorraEngine.m; path = Engine/DiscorraEngine.m; sourceTree = "<group>"; };
 		51C2D1C716222AC30083352F /* GRMustache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustache.h; sourceTree = "<group>"; };
@@ -274,6 +277,7 @@
 		51F08C011621D45B00A559B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				518DDD4D1629750D0061B9EF /* Localizable.strings */,
 				511FD0451627085A001772E5 /* Discorra.iconset */,
 				51F08C021621D45B00A559B5 /* Discorra-Info.plist */,
 				51F08C031621D45B00A559B5 /* InfoPlist.strings */,
@@ -385,6 +389,7 @@
 				511FD042162701E3001772E5 /* index.mustache in Resources */,
 				511FD043162701E3001772E5 /* rss.mustache in Resources */,
 				511FD0461627085A001772E5 /* Discorra.iconset in Resources */,
+				518DDD4F1629750D0061B9EF /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +423,16 @@
 			);
 			name = MainWindowController.xib;
 			path = "Window Controllers";
+			sourceTree = "<group>";
+		};
+		518DDD4D1629750D0061B9EF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				518DDD4E1629750D0061B9EF /* en */,
+				518DDD50162975140061B9EF /* fr */,
+			);
+			name = Localizable.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		51F08C031621D45B00A559B5 /* InfoPlist.strings */ = {
