@@ -412,7 +412,7 @@
 										<object class="NSTextField" id="778438204">
 											<reference key="NSNextResponder" ref="353973570"/>
 											<int key="NSvFlags">301</int>
-											<string key="NSFrame">{{17, 143}, {393, 59}}</string>
+											<string key="NSFrame">{{17, 124}, {393, 91}}</string>
 											<reference key="NSSuperview" ref="353973570"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="570039552"/>
@@ -1496,7 +1496,6 @@
 						<string key="globalArticleNew:">id</string>
 						<string key="globalBlogBuild:">id</string>
 						<string key="globalBlogRefresh:">id</string>
-						<string key="refresh:">id</string>
 						<string key="refreshButtonPressed:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -1534,10 +1533,6 @@
 						</object>
 						<object class="IBActionInfo" key="globalBlogRefresh:">
 							<string key="name">globalBlogRefresh:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="refresh:">
-							<string key="name">refresh:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="refreshButtonPressed:">

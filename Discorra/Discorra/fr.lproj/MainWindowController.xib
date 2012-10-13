@@ -133,7 +133,6 @@
 							<string key="NSFrame">{{733, 3}, {71, 25}}</string>
 							<reference key="NSSuperview" ref="714029937"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="207454101">
@@ -413,7 +412,7 @@
 										<object class="NSTextField" id="778438204">
 											<reference key="NSNextResponder" ref="353973570"/>
 											<int key="NSvFlags">301</int>
-											<string key="NSFrame">{{17, 143}, {393, 59}}</string>
+											<string key="NSFrame">{{17, 124}, {393, 90}}</string>
 											<reference key="NSSuperview" ref="353973570"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="570039552"/>
@@ -610,7 +609,6 @@
 							<string key="NSFrame">{{429, 13}, {82, 32}}</string>
 							<reference key="NSSuperview" ref="333597229"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="123318570">
@@ -1264,11 +1262,6 @@
 						<reference key="parent" ref="971170344"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">236</int>
-						<reference key="object" ref="300891379"/>
-						<reference key="parent" ref="353973570"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">237</int>
 						<reference key="object" ref="778438204"/>
 						<array class="NSMutableArray" key="children">
@@ -1393,6 +1386,11 @@
 						<int key="objectID">259</int>
 						<reference key="object" ref="68604826"/>
 						<reference key="parent" ref="54973184"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">236</int>
+						<reference key="object" ref="300891379"/>
+						<reference key="parent" ref="353973570"/>
 					</object>
 				</array>
 			</object>
