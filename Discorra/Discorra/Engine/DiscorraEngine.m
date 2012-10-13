@@ -302,11 +302,25 @@ static NSString* const templateRss = @"rss.mustache";
 #pragma mark Article creation
 
 - (bool)newArticleWithTitle:(NSString*)title {
-    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *filename = [NSString stringWithFormat:@"%@_%@.md",
+                                        [dateFormatter stringFromDate:[NSDate date]],
+                                        [title.lowercaseString  sanitizedFileNameString]];
+    return [self newArticleWithTitle:title andFilename:filename];
 }
 
 - (bool)newArticleWithTitle:(NSString*)title andFilename:(NSString*)filename {
-    
+    NSError *err = nil;
+    NSString *fullPath = [[self articleFolderPath] stringByAppendingPathComponent:filename];
+    if(![[NSString stringWithFormat:@"%@\n", title] writeToFile:fullPath
+                                                     atomically:NO
+                                                       encoding:NSUTF8StringEncoding
+                                                          error:&err]) {
+        NSLog(@"Error while creating new article at %@ : %@", fullPath, [err localizedDescription]);
+        return NO;
+    }
+    return YES;
 }
 
 @end
