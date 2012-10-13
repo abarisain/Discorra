@@ -49,14 +49,14 @@
 		5140B8621625821000A1A1DA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		518DDD40162969050061B9EF /* NSString+FilenameOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+FilenameOperations.h"; path = "Categories/NSString+FilenameOperations.h"; sourceTree = "<group>"; };
 		518DDD41162969050061B9EF /* NSString+FilenameOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FilenameOperations.m"; path = "Categories/NSString+FilenameOperations.m"; sourceTree = "<group>"; };
-		518DDD44162970430061B9EF /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		518DDD45162970430061B9EF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		518DDD46162970430061B9EF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = fr.lproj/Credits.rtf; sourceTree = "<group>"; };
-		518DDD4A162972080061B9EF /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindowController.xib; sourceTree = "<group>"; };
 		518DDD4B162974BE0061B9EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainWindowController.xib; sourceTree = "<group>"; };
 		518DDD4C162974BE0061B9EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		518DDD4E1629750D0061B9EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Discorra/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		518DDD50162975140061B9EF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Discorra/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		518DDD53162975610061B9EF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainWindowController.strings; sourceTree = "<group>"; };
+		518DDD54162975790061B9EF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		51A856151622C89F00079F38 /* DiscorraEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscorraEngine.h; path = Engine/DiscorraEngine.h; sourceTree = "<group>"; };
 		51A856161622C89F00079F38 /* DiscorraEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscorraEngine.m; path = Engine/DiscorraEngine.m; sourceTree = "<group>"; };
 		51C2D1C716222AC30083352F /* GRMustache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustache.h; sourceTree = "<group>"; };
@@ -418,8 +418,8 @@
 		518DDD49162972030061B9EF /* MainWindowController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				518DDD4A162972080061B9EF /* fr */,
 				518DDD4B162974BE0061B9EF /* Base */,
+				518DDD53162975610061B9EF /* fr */,
 			);
 			name = MainWindowController.xib;
 			path = "Window Controllers";
@@ -456,8 +456,8 @@
 		51F08C0F1621D45B00A559B5 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				518DDD44162970430061B9EF /* fr */,
 				518DDD4C162974BE0061B9EF /* Base */,
+				518DDD54162975790061B9EF /* fr */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
