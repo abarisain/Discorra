@@ -23,7 +23,6 @@
 		51C2D1DE16222AC30083352F /* libGRMustache5-MacOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C2D1DA16222AC30083352F /* libGRMustache5-MacOS.a */; };
 		51C2D1DF16222AC30083352F /* libMMMarkdown-Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C2D1DC16222AC30083352F /* libMMMarkdown-Mac.a */; };
 		51CBCA63162976BA00D1D284 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51CBCA60162976BA00D1D284 /* MainWindowController.xib */; };
-		51CBCA64162976BA00D1D284 /* Discorra-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51F08C021621D45B00A559B5 /* Discorra-Info.plist */; };
 		51F08BFB1621D45B00A559B5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F08BFA1621D45B00A559B5 /* Cocoa.framework */; };
 		51F08C051621D45B00A559B5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51F08C031621D45B00A559B5 /* InfoPlist.strings */; };
 		51F08C071621D45B00A559B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F08C061621D45B00A559B5 /* main.m */; };
@@ -391,7 +390,6 @@
 				511FD0461627085A001772E5 /* Discorra.iconset in Resources */,
 				518DDD4F1629750D0061B9EF /* Localizable.strings in Resources */,
 				51CBCA63162976BA00D1D284 /* MainWindowController.xib in Resources */,
-				51CBCA64162976BA00D1D284 /* Discorra-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
