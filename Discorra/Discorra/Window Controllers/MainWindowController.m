@@ -345,9 +345,9 @@
 }
 
 - (IBAction)createButtonPressed:(id)sender {
-    if(self.articleName.stringValue.length > 0 && self.articleFilename.stringValue.length > 0
-       && [self.articleFilename.stringValue rangeOfString:@"/"].location == NSNotFound
-       && [self.articleFilename.stringValue rangeOfString:@":"].location == NSNotFound) {
+    if(self.articleName.stringValue.length == 0 || self.articleFilename.stringValue.length == 0
+       || [self.articleFilename.stringValue rangeOfString:@"/"].location != NSNotFound
+       || [self.articleFilename.stringValue rangeOfString:@":"].location != NSNotFound) {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
         [alert setMessageText:NSLocalizedString(@"Could not create the article", nil)];
