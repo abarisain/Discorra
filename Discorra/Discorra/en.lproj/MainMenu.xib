@@ -184,8 +184,7 @@
 								<object class="NSMenuItem" id="705341025">
 									<reference key="NSMenu" ref="720053764"/>
 									<string key="NSTitle">New</string>
-									<string key="NSKeyEquiv">n</string>
-									<int key="NSKeyEquivModMask">1048576</int>
+									<string key="NSKeyEquiv"/>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
@@ -290,6 +289,15 @@
 						<object class="NSMenu" key="NSSubmenu" id="643378801">
 							<string key="NSTitle">Article</string>
 							<array class="NSMutableArray" key="NSMenuItems">
+								<object class="NSMenuItem" id="786177839">
+									<reference key="NSMenu" ref="643378801"/>
+									<string key="NSTitle">New</string>
+									<string key="NSKeyEquiv">n</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
 								<object class="NSMenuItem" id="211905126">
 									<reference key="NSMenu" ref="643378801"/>
 									<string key="NSTitle">Edit</string>
@@ -466,6 +474,14 @@
 						<reference key="destination" ref="671044615"/>
 					</object>
 					<int key="connectionID">735</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">globalArticleNew:</string>
+						<reference key="source" ref="1014"/>
+						<reference key="destination" ref="786177839"/>
+					</object>
+					<int key="connectionID">737</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -701,6 +717,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="211905126"/>
 							<reference ref="1048313063"/>
+							<reference ref="786177839"/>
 						</array>
 						<reference key="parent" ref="732952423"/>
 					</object>
@@ -741,6 +758,11 @@
 						<reference key="object" ref="671044615"/>
 						<reference key="parent" ref="942023485"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">736</int>
+						<reference key="object" ref="786177839"/>
+						<reference key="parent" ref="643378801"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -780,6 +802,7 @@
 				<string key="73.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="730.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="734.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="736.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="82.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -789,7 +812,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">735</int>
+			<int key="maxID">737</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -817,6 +840,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="globalArticleDelete:">id</string>
 						<string key="globalArticleEdit:">id</string>
+						<string key="globalArticleNew:">id</string>
 						<string key="globalBlogBuild:">id</string>
 						<string key="globalBlogRefresh:">id</string>
 					</dictionary>
@@ -827,6 +851,10 @@
 						</object>
 						<object class="IBActionInfo" key="globalArticleEdit:">
 							<string key="name">globalArticleEdit:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="globalArticleNew:">
+							<string key="name">globalArticleNew:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="globalBlogBuild:">
@@ -854,6 +882,8 @@
 						<string key="globalArticleDelete:">id</string>
 						<string key="globalArticleEdit:">id</string>
 						<string key="globalBlogBuild:">id</string>
+						<string key="globalBlogRefresh:">id</string>
+						<string key="refresh:">id</string>
 						<string key="refreshButtonPressed:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -883,6 +913,14 @@
 						</object>
 						<object class="IBActionInfo" key="globalBlogBuild:">
 							<string key="name">globalBlogBuild:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="globalBlogRefresh:">
+							<string key="name">globalBlogRefresh:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="refresh:">
+							<string key="name">refresh:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="refreshButtonPressed:">

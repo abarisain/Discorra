@@ -167,9 +167,13 @@
 }
 
 - (IBAction)deleteMenuPressed:(id)sender {
-    if(self.tableView.clickedRow < 0)
+    [self addArticle:sender];
+}
+
+- (IBAction)globalArticleNew:(id)sender {
+    if(self.tableView.selectedRow < 0)
         return;
-    [self deleteArticle:[tableData objectAtIndex:self.tableView.clickedRow]];
+    [self editArticle:[tableData objectAtIndex:self.tableView.selectedRow]];
 }
 
 - (IBAction)globalArticleEdit:(id)sender {
@@ -280,5 +284,20 @@
     }
     [self refreshData];
 }
+
+@end
+
+@implementation MainWindowNewArticlePanel
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
+
+- (IBAction)cancelButtonPressed:(id)sender {
+}
+
+- (IBAction)createButtonPressed:(id)sender {
+}
+
 
 @end

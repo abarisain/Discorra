@@ -44,6 +44,7 @@
 - (IBAction)refreshButtonPressed:(id)sender;
 - (IBAction)editMenuPressed:(id)sender;
 - (IBAction)deleteMenuPressed:(id)sender;
+- (IBAction)globalArticleNew:(id)sender;
 - (IBAction)globalArticleEdit:(id)sender;
 - (IBAction)globalArticleDelete:(id)sender;
 - (IBAction)globalBlogBuild:(id)sender;
@@ -63,6 +64,20 @@
 @property (weak) IBOutlet NSButton *buildButton;
 @property (weak) IBOutlet WebView *webView;
 @property (weak) IBOutlet NSTextField *previewText;
+@property (strong) IBOutlet MainWindowNewArticlePanel *newArticleWindow;
 
+
+@end
+
+@interface MainWindowNewArticlePanel : NSWindow {
+    
+}
+
+- (IBAction)cancelButtonPressed:(id)sender;
+- (IBAction)createButtonPressed:(id)sender;
+
+@property (weak) IBOutlet NSTextField *articleName;
+@property (weak) IBOutlet NSTextField *articleFilename;
+@property (weak) IBOutlet NSButton *openAfterCreation;
 
 @end
